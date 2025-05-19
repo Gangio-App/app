@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      # MongoDB Configuration
+      - MONGODB_URI=mongodb+srv://ertact:Ertacdemm111@project0-db.ahspvi3.mongodb.net/?retryWrites=true&w=majority&appName=project0-db
+      - MONGODB_DB_NAME=project0-db
+      # Firebase Configuration
+      - NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyABG_TETlu5z6oHEY2l4Z-IRlKpY083fYs
+      - NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=cloak-ddeb9.firebaseapp.com
+      - NEXT_PUBLIC_FIREBASE_PROJECT_ID=cloak-ddeb9
+      - NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=cloak-ddeb9.appspot.com
+      - NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=312502649284
+      - NEXT_PUBLIC_FIREBASE_APP_ID=1:312502649284:web:1064a5eab8c3d6502e6491
+      - NEXT_PUBLIC_FIREBASE_VAPID_KEY=BJBmaDjzzMLVQ--QDN97ROFWPiPgaVqd90QOHIHomp1BNNp2BCRc2O63Cks5Yg6odTSY-DqNPt1iPWH7PUCzzLc
+      # Tenor API
+      - NEXT_PUBLIC_TENOR_API_KEY=AIzaSyB2X459F0-KL-EvHmwHCNlJcKHSFuiD4GI
+      # Pusher Configuration
+      - PUSHER_APP_ID=1992874
+      - NEXT_PUBLIC_PUSHER_APP_KEY=830de34c20800028436a
+      - PUSHER_SECRET=3f289e20ddf379c79c1b
+      - NEXT_PUBLIC_PUSHER_CLUSTER=eu
+      # Admin Credentials
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=ertacdemm
+      - ADMIN_PASSWORD_HASH=$2b$10$qUfg47cgJ7fio2t76Gso..UavUgBahqcUB4Q4wOjFIe2jOXrkdKSS
+      # LiveKit Configuration
+      - LIVEKIT_URL=wss://gangio-1iknik3h.livekit.cloud
+      - LIVEKIT_API_KEY=APIBXyoN7WvttQT
+      - LIVEKIT_API_SECRET=d7LUGmuU7w222rE6TOXS9SOs3Duooi5zKbiEwffMbqg
+      - NEXT_PUBLIC_LIVEKIT_URL=wss://gangio-1iknik3h.livekit.cloud
+      # NextAuth Configuration
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=4a9d3e4a5d6b7c8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2
+    volumes:
+      - ./public:/app/public
+      - ./uploads:/app/uploads
+    restart: unless-stopped

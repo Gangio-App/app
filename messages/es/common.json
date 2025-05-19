@@ -1,0 +1,591 @@
+{
+  "app": {
+    "name": "gvng.io",
+    "tagline": "Conéctate con amigos y comunidades.",
+    "version": "Versión 0.1.0-alpha",
+    "alphaTest": "Prueba Alfa",
+    "slogan": "Donde los Gamers se Unen"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "friends": "Amigos",
+    "servers": "Servidores",
+    "messages": "Mensajes",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión",
+    "features": "Características",
+    "discover": "Descubrir",
+    "about": "Acerca de",
+    "careers": "Carreras",
+    "download": "Descargar",
+    "login": "Iniciar sesión",
+    "openApp": "Abrir App"
+  },
+  "megaMenu": {
+    "communication": "Comunicación",
+    "voiceChannels": "Canales de Voz",
+    "voiceChannelsDesc": "Chat de voz cristalino para juegos",
+    "textChannels": "Canales de Texto",
+    "textChannelsDesc": "Mensajería rica con emojis y multimedia",
+    "directMessages": "Mensajes Directos",
+    "directMessagesDesc": "Conversaciones privadas con amigos",
+    "gaming": "Juegos",
+    "gameIntegration": "Integración de Juegos",
+    "gameIntegrationDesc": "Conéctate con Steam, Epic y más",
+    "gameOverlays": "Superposiciones de Juego",
+    "gameOverlaysDesc": "Ve quién habla sin cambiar de ventana",
+    "squadFinder": "Buscador de Escuadrones",
+    "squadFinderDesc": "Encuentra el equipo de juego perfecto",
+    "company": "Compañía",
+    "aboutUs": "Sobre Nosotros",
+    "aboutUsDesc": "Nuestra misión e historia",
+    "careers": "Carreras",
+    "careersDesc": "Únete a nuestro equipo en crecimiento",
+    "blog": "Blog",
+    "blogDesc": "Noticias y actualizaciones",
+    "resources": "Recursos",
+    "changelog": "Registro de Cambios",
+    "changelogDesc": "Últimas actualizaciones y características",
+    "status": "Estado",
+    "statusDesc": "Estado del sistema y métricas",
+    "faq": "Preguntas Frecuentes",
+    "faqDesc": "Preguntas frecuentes",
+    "discoverPro": "Descubre GANGIO Pro",
+    "proDesc": "Características mejoradas para jugadores serios",
+    "learnMore": "Más información"
+  },
+  "settings": {
+    "title": "Configuración",
+    "categories": {
+      "userSettings": "CONFIGURACIÓN DE USUARIO",
+      "appSettings": "CONFIGURACIÓN DE LA APLICACIÓN",
+      "info": "INFORMACIÓN"
+    },
+    "tabs": {
+      "myAccount": "Mi cuenta",
+      "profile": "Perfil",
+      "connections": "Conexiones",
+      "privacySafety": "Privacidad y seguridad",
+      "appearance": "Apariencia",
+      "notifications": "Notificaciones",
+      "squadFinder": "Buscador de Escuadrones",
+      "voiceVideo": "Voz y video",
+      "keybinds": "Atajos de teclado",
+      "language": "Idioma",
+      "experimental": "Funciones experimentales",
+      "feedback": "Comentarios",
+      "changelog": "Registro de cambios",
+      "sessions": "Sesiones activas"
+    },
+    "notImplemented": "Este panel de configuración aún no está implementado."
+  },
+  "changelog": {
+    "title": "Registro de cambios",
+    "viewFull": "Ver registro completo",
+    "viewAllUpdates": "Ver todas las actualizaciones",
+    "filters": {
+      "all": "Todas las actualizaciones"
+    },
+    "tags": {
+      "features": "Funciones",
+      "performance": "Rendimiento",
+      "bugfixes": "Correcciones",
+      "security": "Seguridad"
+    },
+    "types": {
+      "feature": "Nueva función",
+      "improvement": "Mejora",
+      "fix": "Corrección",
+      "security": "Seguridad"
+    }
+  },
+  "appearance": {
+    "title": "Ajustes de apariencia",
+    "theme": {
+      "title": "Tema",
+      "dark": "Oscuro",
+      "light": "Claro",
+      "system": "Sincronizar con el sistema"
+    },
+    "colorScheme": {
+      "title": "Esquema de color",
+      "blue": "Azul",
+      "green": "Verde",
+      "purple": "Morado",
+      "pink": "Rosa",
+      "red": "Rojo",
+      "orange": "Naranja",
+      "custom": "Personalizado"
+    },
+    "customColors": {
+      "title": "Colores personalizados",
+      "enable": "Usar colores personalizados",
+      "accent": "Color de acento",
+      "background": "Color de fondo",
+      "foreground": "Color de primer plano"
+    },
+    "fontSize": {
+      "title": "Tamaño de fuente",
+      "small": "Pequeño",
+      "medium": "Mediano",
+      "large": "Grande"
+    },
+    "fontFamily": {
+      "title": "Familia tipográfica"
+    },
+    "fontWeight": {
+      "title": "Grosor de fuente"
+    },
+    "preview": "Vista previa"
+  },
+  "language": {
+    "title": "Ajustes de idioma",
+    "displayLanguage": {
+      "title": "Idioma de la interfaz",
+      "autoDetect": "Detectar idioma automáticamente desde el navegador",
+      "helpText": "Este ajuste cambia el idioma de la interfaz de usuario. Los cambios se aplican al recargar la aplicación."
+    },
+    "regionalFormat": {
+      "title": "Formato regional",
+      "dateFormat": "Formato de fecha",
+      "timeFormat": "Formato de hora",
+      "helpText": "Estos ajustes determinan cómo se muestran las fechas y horas en toda la aplicación."
+    },
+    "textTranslation": {
+      "title": "Texto y traducción",
+      "spellCheck": "Habilitar corrección ortográfica",
+      "autoTranslate": "Traducir mensajes automáticamente",
+      "threshold": "Umbral de confianza de traducción",
+      "thresholdLow": "Bajo",
+      "thresholdHigh": "Alto",
+      "thresholdHelp": "Un umbral más alto significa que las traducciones solo se mostrarán cuando el sistema esté más seguro de su precisión.",
+      "downloadPack": "Descargar paquete de idioma",
+      "contribute": "Contribuir a las traducciones"
+    },
+    "preview": {
+      "title": "Vista previa",
+      "currentLanguage": "Idioma actual",
+      "dateFormat": "Ejemplo de formato de fecha",
+      "timeFormat": "Ejemplo de formato de hora",
+      "spellCheck": "Corrección ortográfica",
+      "autoTranslation": "Traducción automática",
+      "enabled": "Activado",
+      "disabled": "Desactivado",
+      "withThreshold": "Activado (umbral {threshold}%)"
+    }
+  },
+  "squadFinder": {
+    "title": "Buscador de Escuadrones",
+    "createSquad": "Crear Escuadrón",
+    "joinSquad": "Unirse al Escuadrón",
+    "leaveSquad": "Abandonar Escuadrón",
+    "waitingForOthers": "Esperando a que otros se unan...",
+    "squadRoom": "Sala de Escuadrón",
+    "skillLevel": "Nivel de Habilidad",
+    "region": "Región",
+    "settings": {
+      "title": "Configuración del Buscador de Escuadrones",
+      "displayName": "Nombre para Mostrar",
+      "displayNameDesc": "Este nombre se mostrará a otros jugadores en el Buscador de Escuadrones",
+      "steamProfile": "URL de Perfil de Steam",
+      "steamProfileDesc": "Enlace a tu perfil de Steam para verificación",
+      "cs2Rating": "Clasificación CS2 (ELO)",
+      "gamingRegion": "Región de Juego Principal",
+      "gamingRegionDesc": "Elige la región donde juegas principalmente"
+    }
+  },
+  "voiceVideo": {
+    "title": "Ajustes de voz y video",
+    "inputDevices": {
+      "title": "Dispositivos de entrada",
+      "microphone": "Micrófono",
+      "inputVolume": "Volumen de entrada",
+      "noiseSupression": "Supresión de ruido",
+      "echoCancellation": "Cancelación de eco",
+      "autoGain": "Control de ganancia automática",
+      "testMic": "Probar micrófono",
+      "permissionRequired": "Se requiere acceso al micrófono para los ajustes de audio. Por favor, concede permiso.",
+      "requestAccess": "Solicitar acceso"
+    },
+    "outputDevices": {
+      "title": "Dispositivos de salida",
+      "speaker": "Altavoz",
+      "outputVolume": "Volumen de salida",
+      "testSpeaker": "Probar altavoz"
+    },
+    "videoSettings": {
+      "title": "Ajustes de video",
+      "camera": "Cámara",
+      "quality": "Calidad de video",
+      "qualityLow": "Baja (320×240)",
+      "qualityMedium": "Media (640×480)",
+      "qualityHigh": "Alta (960×540)",
+      "qualityHD": "HD (1280×720)",
+      "mirror": "Voltear video",
+      "backgroundBlur": "Desenfoque de fondo",
+      "blurAmount": "Cantidad de desenfoque",
+      "startPreview": "Iniciar vista previa",
+      "stopPreview": "Detener vista previa",
+      "previewPlaceholder": "Aquí aparecerá la vista previa del video",
+      "permissionRequired": "Se requiere acceso a la cámara para los ajustes de video. Por favor, concede permiso.",
+      "requestAccess": "Solicitar acceso"
+    },
+    "voiceActivity": {
+      "title": "Actividad de voz",
+      "pushToTalk": "Pulsar para hablar",
+      "voiceDetection": "Detección de voz",
+      "releaseDelay": "Retardo al soltar",
+      "sensitivity": "Sensibilidad",
+      "sensitivityHelp": "Una mayor sensibilidad hace que el micrófono se active más fácilmente."
+    }
+  },
+  "friends": {
+    "title": "Amigos",
+    "online": "En línea",
+    "all": "Todos",
+    "pending": "Pendientes",
+    "blocked": "Bloqueados",
+    "addFriend": "Agregar amigo",
+    "incomingRequests": "Solicitudes de amistad entrantes",
+    "outgoingRequests": "Solicitudes de amistad salientes",
+    "noFriends": "No se encontraron amigos. ¡Agrega algunos para empezar!",
+    "noRequests": "No hay solicitudes pendientes",
+    "accept": "Aceptar",
+    "ignore": "Ignorar",
+    "cancel": "Cancelar",
+    "message": "Mensaje",
+    "unblock": "Desbloquear"
+  },
+  "messages": {
+    "title": "Mensajes",
+    "noMessages": "Aún no hay mensajes",
+    "startConversation": "Iniciar conversación con {name}",
+    "typing": "{name} está escribiendo…",
+    "sendMessage": "Enviar un mensaje",
+    "newMessages": "Nuevos mensajes"
+  },
+  "dashboard": {
+    "welcome": "Bienvenido",
+    "welcomeBack": "¡Bienvenido de nuevo, {name}!",
+    "quickActions": "Acciones rápidas",
+    "startChat": "Iniciar chat",
+    "createServer": "Crear servidor",
+    "joinServer": "Unirse a un servidor",
+    "findFriends": "Buscar amigos",
+    "recentActivity": "Actividad reciente",
+    "onlineFriends": "Amigos en línea",
+    "pendingRequests": "Solicitudes pendientes",
+    "viewAll": "Ver todo",
+    "noOnlineFriends": "Ningún amigo en línea",
+    "noPendingRequests": "No hay solicitudes pendientes",
+    "serverActivity": "Actividad del servidor",
+    "noServerActivity": "Sin actividad reciente en el servidor",
+    "directMessages": "Mensajes directos",
+    "noDirectMessages": "Sin mensajes directos recientes"
+  },
+  "landing": {
+    "hero": {
+      "badge": "Plataforma de Juegos de Nueva Generación",
+      "title": "Mejora tu experiencia de juego",
+      "subtitle": "Plataforma de nueva generación para conectar, comunicar y ganar con tus amigos gamers.",
+      "downloadNow": "DESCARGAR AHORA",
+      "learnMore": "Más información"
+    },
+    "features": {
+      "title": "Funciones diseñadas para gamers",
+      "subtitle": "Todo lo que necesitas para crear tu comunidad y mantener la ventaja competitiva.",
+      "realTimeChat": {
+        "title": "Chat en Tiempo Real",
+        "description": "Experimenta mensajería ultrarrápida con nuestra infraestructura de comunicación en tiempo real de vanguardia."
+      },
+      "voiceChat": {
+        "title": "Chat de voz cristalino",
+        "description": "Comunicación de voz de baja latencia y alta calidad para tus sesiones intensas."
+      },
+      "screenSharing": {
+        "title": "Compartir pantalla",
+        "description": "Comparte momentos épicos, estrategias o tutoriales en tiempo real con alta calidad."
+      },
+      "customServers": {
+        "title": "Servidores personalizados",
+        "description": "Crea servidores para tu comunidad, organiza canales y personaliza tu experiencia."
+      },
+      "lowLatency": {
+        "title": "Baja latencia",
+        "description": "Infraestructura optimizada para comunicación fluida durante el juego."
+      },
+      "richPresence": {
+        "title": "Rich Presence",
+        "description": "Ve qué juegan tus amigos, cuánto llevan jugando y si están disponibles."
+      },
+      "crossPlatform": {
+        "title": "Multiplataforma",
+        "description": "Mantente conectado en Windows, macOS, Linux, iOS y Android."
+      },
+      "serverCommunities": {
+        "title": "Comunidades de Servidores",
+        "description": "Crea o únete a servidores, organiza canales y construye tu comunidad en torno a intereses compartidos."
+      },
+      "voiceChannels": {
+        "title": "Voz Nítida y Clara",
+        "description": "Canales de voz de alta calidad y baja latencia para una comunicación de equipo fluida y encuentros casuales."
+      },
+      "gifSupport": {
+        "title": "¡Exprésate con GIFs!",
+        "description": "Envía GIFs divertidos y emocionantes para darle vida a tus conversaciones."
+      },
+      "gamerFocused": {
+        "title": "Enfocado en Gamers",
+        "description": "Creado por gamers, para gamers. Nuestra plataforma está diseñada para satisfacer las necesidades únicas de la comunidad de jugadores."
+      },
+      "security": {
+        "title": "Seguridad y Privacidad",
+        "description": "Nos tomamos muy en serio tu seguridad y privacidad. Nuestra plataforma está construida con robustas medidas de seguridad para proteger tus datos."
+      }
+    },
+    "multilanguage": {
+      "badge": "Alcance Global",
+      "title": "Ahora multilingüe",
+      "subtitle": "Conéctate con gamers de todo el mundo en su idioma.",
+      "helpTranslate": "Ayuda a traducir"
+    },
+    "community": {
+      "title": "Únete a nuestra creciente comunidad",
+      "subtitle": "Conéctate, comparte consejos y haz nuevos amigos de todo el mundo.",
+      "members": "Miembros activos",
+      "servers": "Servidores",
+      "messages": "Mensajes por día",
+      "joinCommunity": "Únete a la comunidad"
+    },
+    "callToAction": {
+      "title": "¿Listo para mejorar tu experiencia de juego?",
+      "subtitle": "Únete a miles de gamers que conectan, comunican y ganan juntos.",
+      "createAccount": "Crear cuenta",
+      "downloadNow": "DESCARGAR AHORA",
+      "downloadClient": "Descargar cliente",
+      "signIn": "Iniciar sesión",
+      "version": "Versión"
+    }
+  },
+  "translations": {
+    "title": "Ayuda a traducir",
+    "subtitle": "Únete a nuestro esfuerzo comunitario para hacer gvng.io accesible a gamers de todo el mundo.",
+    "progress": "Progreso de la traducción",
+    "howToContribute": "Cómo contribuir",
+    "fileStructure": "Estructura de archivos de traducción",
+    "startContributing": "Comenzar a contribuir",
+    "steps": {
+      "fork": "Haz un fork de nuestro repositorio",
+      "locate": "Encuentra los archivos de traducción",
+      "translate": "Traduce los textos",
+      "submit": "Envía un pull request"
+    },
+    "notes": {
+      "placeholders": "Deja los marcadores como están",
+      "structure": "Mantén la misma estructura y claves JSON",
+      "keysOnly": "Traduce solo los valores, no las claves",
+      "test": "Prueba tus traducciones cambiando el idioma en la app"
+    }
+  },
+  "download": {
+    "officialDownloads": "Descargas oficiales",
+    "title": {
+      "first": "Usa GANGIO",
+      "second": "en todas partes"
+    },
+    "subtitle": "Descarga nuestra app para cualquier plataforma y mantente conectado con tus comunidades.",
+    "downloadNow": "Descargar ahora",
+    "downloadButton": "Descargar",
+    "launchWebApp": "Iniciar web app",
+    "platformTypes": {
+      "desktop": "Escritorio",
+      "mobile": "Móvil",
+      "web": "Web"
+    },
+    "recommended": "Recomendado",
+    "version": "Versión",
+    "size": "Tamaño",
+    "systemRequirements": "Requisitos del sistema",
+    "featuresTitle": {
+      "first": "Funciones",
+      "second": "potentes para gamers"
+    },
+    "integrationsTitle": "Integra con tus plataformas de juego favoritas",
+    "faqTitle": "Preguntas frecuentes",
+    "platforms": {
+      "windows": {
+        "description": "Windows 10/11 (64 bits)",
+        "requirements": "Windows 10 o superior, 4 GB de RAM, 500 MB de espacio"
+      },
+      "macos": {
+        "description": "macOS 11.0+ (Apple Silicon e Intel)",
+        "requirements": "macOS 11.0 o superior, 4 GB de RAM, 500 MB de espacio"
+      },
+      "linux": {
+        "description": "Ubuntu, Debian, Fedora y otros",
+        "requirements": "Ubuntu 20.04+, Debian 10+ u otras distribuciones compatibles"
+      },
+      "android": {
+        "description": "Android 8.0+",
+        "requirements": "Android 8.0 o superior, 2 GB de RAM"
+      },
+      "ios": {
+        "description": "iPhone e iPad (iOS 14+)",
+        "requirements": "iOS 14.0 o superior, compatible con iPhone, iPad y iPod touch"
+      },
+      "web": {
+        "name": "Web App",
+        "description": "No requiere descarga",
+        "version": "Última",
+        "size": "Ninguno",
+        "requirements": "Navegador moderno (Chrome, Firefox, Safari, Edge)"
+      }
+    },
+    "download": {
+      "installationGuide": "Guía de instalación",
+      "downloadFor": "Descargar ahora para {{platform}}",
+      "windows": {
+        "description": "Windows 10/11 (64 bits)",
+        "instructions": {
+          "1": "Descarga el instalador de GANGIO (.exe)",
+          "2": "Ejecuta el instalador y sigue las instrucciones en pantalla",
+          "3": "Una vez instalado, inicia GANGIO desde tu escritorio o menú de inicio",
+          "4": "Inicia sesión con tu cuenta o crea una nueva",
+          "5": "¡Comienza a conectarte con tus comunidades de gaming!"
+        }
+      },
+      "macos": {
+        "description": "macOS 11.0+ (Apple Silicon e Intel)",
+        "instructions": {
+          "1": "Descarga la imagen de disco de GANGIO (.dmg)",
+          "2": "Abre la imagen de disco y arrastra GANGIO a tu carpeta de Aplicaciones",
+          "3": "Inicia GANGIO desde tu carpeta de Aplicaciones",
+          "4": "Si se te solicita sobre seguridad, ve a Preferencias del Sistema > Seguridad y Privacidad y permite GANGIO",
+          "5": "Inicia sesión con tu cuenta o crea una nueva"
+        }
+      },
+      "linux": {
+        "description": "Ubuntu, Debian, Fedora y otros",
+        "instructions": {
+          "1": "Descarga el paquete apropiado para tu distribución (.deb, .rpm o AppImage)",
+          "2": "Para .deb: Ejecuta sudo dpkg -i gangio.deb",
+          "3": "Para .rpm: Ejecuta sudo rpm -i gangio.rpm",
+          "4": "Para AppImage: Hazlo ejecutable con chmod +x gangio.AppImage y ejecútalo",
+          "5": "Inicia GANGIO e inicia sesión con tu cuenta"
+        }
+      },
+      "android": {
+        "description": "Android 8.0+",
+        "instructions": {
+          "1": "Descarga GANGIO desde Google Play Store",
+          "2": "Abre la aplicación después de la instalación",
+          "3": "Inicia sesión con tu cuenta o crea una nueva",
+          "4": "Permite notificaciones para una mejor experiencia",
+          "5": "¡Comienza a chatear con tus comunidades de gaming en movimiento!"
+        }
+      },
+      "ios": {
+        "description": "iPhone e iPad (iOS 14+)",
+        "instructions": {
+          "1": "Descarga GANGIO desde la App Store",
+          "2": "Abre la aplicación después de la instalación",
+          "3": "Inicia sesión con tu cuenta o crea una nueva",
+          "4": "Permite notificaciones cuando se te solicite",
+          "5": "¡Disfruta de GANGIO en tu dispositivo iOS!"
+        }
+      }
+    },
+    "features": {
+      "voiceChat": {
+        "title": "Chat de voz cristalino",
+        "description": "Audio de baja latencia con supresión de ruido"
+      },
+      "gameIntegration": {
+        "title": "Integración de juegos",
+        "description": "Conéctate con Steam, Epic Games y más"
+      },
+      "community": {
+        "title": "Creación de comunidades",
+        "description": "Crea y gestiona comunidades con potentes herramientas"
+      },
+      "security": {
+        "title": "Seguridad y privacidad",
+        "description": "Cifrado de extremo a extremo y controles robustos"
+      },
+      "performance": {
+        "title": "Mejora de rendimiento",
+        "description": "Optimizado para gaming con uso mínimo de recursos"
+      },
+      "crossPlatform": {
+        "title": "Sincronización multiplataforma",
+        "description": "Experiencia continua en todos tus dispositivos"
+      }
+    },
+    "faq": {
+      "free": {
+        "question": "¿GANGIO es gratuito?",
+        "answer": "Sí, GANGIO es completamente gratuito. Ofrecemos suscripciones premium con funciones extra, pero la funcionalidad básica siempre será gratis."
+      },
+      "multipleDevices": {
+        "question": "¿Puedo usar GANGIO en varios dispositivos?",
+        "answer": "¡Por supuesto! Tu cuenta se sincroniza en todas las plataformas, para cambiar sin problemas entre escritorio, móvil y web."
+      },
+      "security": {
+        "question": "¿Qué tan seguro es GANGIO?",
+        "answer": "Usamos prácticas y cifrado estándar de la industria para mantener tus datos seguros. Tu privacidad es nuestra prioridad."
+      },
+      "updates": {
+        "question": "¿Cómo actualizo GANGIO?",
+        "answer": "La app verifica actualizaciones automáticamente al iniciar. También puedes comprobar manualmente en la configuración."
+      }
+    }
+  },
+  "login": {
+    "welcomeBack": "Bienvenido de nuevo",
+    "subtitle": "Inicia sesión en gvng.io y conéctate con tu comunidad",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "rememberMe": "Recuérdame",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "signIn": "Iniciar sesión",
+    "loggingIn": "Iniciando sesión...",
+    "orSignInWith": "O INICIA SESIÓN CON",
+    "signInWithSteam": "Inicia sesión con Steam",
+    "signInWithGoogle": "Inicia sesión con Google"
+  },
+  "footer": {
+    "description": "GANGIO es la plataforma de comunicación definitiva para jugadores. Conéctate con amigos, construye comunidades y eleva tu experiencia de juego.",
+    "product": "Producto",
+    "download": "Descargar",
+    "features": "Características",
+    "premium": "GANGIO Pro",
+    "status": "Estado",
+    "changelog": "Registro de Cambios",
+    "company": "Compañía",
+    "aboutUs": "Sobre Nosotros",
+    "careers": "Carreras",
+    "blog": "Blog",
+    "branding": "Marca",
+    "contact": "Contacto",
+    "resources": "Recursos",
+    "support": "Soporte",
+    "faq": "Preguntas Frecuentes",
+    "communityGuidelines": "Normas de la Comunidad",
+    "termsOfService": "Términos de Servicio",
+    "privacyPolicy": "Política de Privacidad",
+    "cookiePolicy": "Política de Cookies",
+    "newsletter": {
+      "title": "Mantente informado",
+      "description": "Suscríbete a nuestro boletín para recibir las últimas actualizaciones, características y noticias.",
+      "placeholder": "Introduce tu email",
+      "subscribe": "Suscribirse"
+    },
+    "copyright": "Todos los derechos reservados.",
+    "bottomLinks": {
+      "terms": "Términos",
+      "privacy": "Privacidad",
+      "cookies": "Cookies",
+      "legal": "Legal"
+    }
+  }
+}

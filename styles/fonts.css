@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Tiny5&display=swap');
+
+/* Font Classes */
+
+/* Tiny5 */
+.tiny5-regular {
+  font-family: "Tiny5", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Atkinson Hyperlegible Mono */
+.atkinson-hyperlegible-mono {
+  font-family: "Atkinson Hyperlegible Mono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* Roboto Flex */
+.roboto-flex {
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "wdth" 100,
+    "GRAD" 0,
+    "XOPQ" 96,
+    "XTRA" 468,
+    "YOPQ" 79,
+    "YTAS" 750,
+    "YTDE" -203,
+    "YTFI" 738,
+    "YTLC" 514,
+    "YTUC" 712;
+}
+
+/* Inter */
+.inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* Montserrat */
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* Comic Neue */
+.comic-neue-light {
+  font-family: "Comic Neue", cursive;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.comic-neue-regular {
+  font-family: "Comic Neue", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.comic-neue-bold {
+  font-family: "Comic Neue", cursive;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Open Sans */
+.open-sans {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+/* Lato */
+.lato {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+}
+
+/* Cascadia Mono */
+.cascadia-mono {
+  font-family: "Cascadia Mono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* Theme Variables */
+:root {
+  --accent: #FD6671;
+  --background: #292937;
+  --foreground: #F6F6F6;
+  --primary-background: rgb(33 33 44);
+  --primary-header: rgb(44 44 55);
+  --secondary-background: rgb(28 28 36);
+  --secondary-foreground: #C8C8C8;
+  --secondary-header: rgb(37 37 48);
+  --tertiary-background: rgb(77 77 88);
+  --tertiary-foreground: rgb(133 133 144);
+  --block: rgb(25 25 30);
+  --message-box: rgb(55 55 66);
+  --mention: rgba(251, 255, 0, 0);
+  --scrollbar-thumb: #a44937;
+  --scrollbar-track: transparent;
+  --status-online: #3ABF7E;
+  --status-away: #F39F00;
+  --status-busy: #F84848;
+  --status-streaming: #977EFF;
+  --status-invisible: #A5A5A5;
+  --success: #65E572;
+}

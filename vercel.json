@@ -1,0 +1,55 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/badges",
+      "schedule": "0 0 * * *"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/cron/badges",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    }
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install && npm install tailwindcss-animate",
+  "framework": "nextjs",
+  "regions": ["fra1"],
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Authorization"
+      },
+      "continue": true
+    }
+  ],
+  "functions": {
+    "api/servers/route.ts": {
+      "maxDuration": 30,
+      "memory": 3008
+    },
+    "api/servers/*/channels/route.ts": {
+      "maxDuration": 30,
+      "memory": 3008
+    },
+    "api/**/*.{js,ts}": {
+      "maxDuration": 20,
+      "memory": 1024
+    }
+  }
+}

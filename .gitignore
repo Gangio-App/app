@@ -1,0 +1,107 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Next.js
+.next
+.next/
+.next/**/*
+.next/cache/
+/out/
+
+# Production
+/build
+/dist
+
+# Misc
+.DS_Store
+*.pem
+Thumbs.db
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+dev-debug.log
+*.log
+logs/
+
+# Local env files
+.env*.local
+.env
+.env.development
+.env.production
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.sublime-*
+
+# Task files
+tasks.json
+tasks/
+
+# Large media files
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
+*.webm
+*.mp3
+*.wav
+*.psd
+*.ai
+*.sketch
+
+# Archives and compressed files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.iso
+*.dmg
+
+# Generated files
+public/sitemap.xml
+public/feed.xml
+public/uploads/
+
+# Temporary files
+.temp
+.tmp
+.cache
+tmp/
+temp/
+
+# Build and cache
+.turbo/
+.swc/
+.eslintcache
+.stylelintcache
+storybook-static/
+
+# Database
+*.sqlite
+*.db
+mongodb/
+dump/
+.vercel

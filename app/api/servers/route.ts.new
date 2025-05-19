@@ -1,0 +1,539 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { connectToDatabase, getCollection } from '@/lib/db';
+import { v4 as uuidv4 } from 'uuid';
+import { Server, ServerMember, Role, Channel, Category } from '@/types/models';
+import { Db, WithId, Document, Collection, ObjectId } from 'mongodb';
+import { getCachedData, invalidateCache, invalidateCacheByPrefix } from '@/lib/cache';
+
+// Increase the body size limit for this specific route
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '50mb',
+    },
+  },
+};
+
+/**
+ * Fetch all server IDs for a user from multiple sources
+ */
+async function fetchServerIds(userId: string): Promise<string[]> {
+  // Set a timeout for the entire operation
+  const timeoutPromise = new Promise<never>((_, reject) => {
+    setTimeout(() => reject(new Error('Server ID fetch timeout after 10 seconds')), 10000);
+  });
+  
+  try {
+    // Connect to the database
+    const db = await connectToDatabase();
+    const serversCollection = getCollection(db, 'servers');
+    const membershipCollection = getCollection(db, 'serverMembers');
+    const usersCollection = getCollection(db, 'users');
+    
+    // Collect server IDs from multiple sources
+    const allServerIds: string[] = [];
+    
+    // Run all queries in parallel for better performance
+    await Promise.allSettled([
+      // 1. Get servers the user is a member of
+      (async () => {
+        try {
+          const membershipDocs = await membershipCollection.find({ userId }).limit(20).toArray();
+          const memberServerIds = membershipDocs
+            .map(doc => doc.serverId)
+            .filter((id): id is string => typeof id === 'string');
+          
+          console.log(`[Servers API] User is a member of ${memberServerIds.length} servers`);
+          allServerIds.push(...memberServerIds);
+        } catch (error) {
+          console.error('[Servers API] Error fetching server memberships:', error);
+        }
+      })(),
+      
+      // 2. Get servers owned by the user
+      (async () => {
+        try {
+          // Set a shorter timeout for this specific query
+          const queryTimeoutPromise = new Promise<never>((_, reject) => {
+            setTimeout(() => reject(new Error('Query timeout after 5 seconds')), 5000);
+          });
+          
+          // Create the actual query promise with a limit
+          const queryPromise = serversCollection.find({ ownerId: userId }).limit(10).toArray();
+          
+          // Race the two promises
+          const ownedServerDocs = await Promise.race([queryPromise, queryTimeoutPromise]) as any[];
+          const ownedServerIds = ownedServerDocs
+            .map(doc => doc.id)
+            .filter((id): id is string => typeof id === 'string');
+            
+          console.log(`[Servers API] User owns ${ownedServerIds.length} servers`);
+          allServerIds.push(...ownedServerIds);
+        } catch (error) {
+          console.error('[Servers API] Error fetching owned servers:', error);
+          console.log('[Servers API] Continuing with servers from other sources');
+        }
+      })(),
+      
+      // 3. Get servers from user document
+      (async () => {
+        try {
+          const userDoc = await usersCollection.findOne({ id: userId });
+          if (userDoc && userDoc.servers && Array.isArray(userDoc.servers)) {
+            const userServerIds = userDoc.servers
+              .map((id: any) => typeof id === 'string' ? id : String(id))
+              .filter((id: string) => id);
+              
+            console.log(`[Servers API] Found ${userServerIds.length} servers in user document`);
+            allServerIds.push(...userServerIds);
+          }
+        } catch (error) {
+          console.error('[Servers API] Error fetching servers from user document:', error);
+        }
+      })()
+    ]);
+    
+    // Remove duplicates
+    const uniqueServerIds = Array.from(new Set(allServerIds));
+    console.log(`[Servers API] Total unique server IDs: ${uniqueServerIds.length}`);
+    
+    // Race against the global timeout
+    return await Promise.race([Promise.resolve(uniqueServerIds), timeoutPromise]);
+  } catch (error) {
+    console.error('[Servers API] Error fetching server IDs:', error);
+    return []; // Return empty array on error
+  }
+}
+
+/**
+ * Fetch server details for a list of server IDs
+ */
+async function fetchServerDetails(serverIds: string[]): Promise<Server[]> {
+  if (!serverIds || serverIds.length === 0) {
+    return [];
+  }
+  
+  let serverDocuments: any[] = [];
+  
+  try {
+    // Get a fresh database connection
+    const db = await connectToDatabase();
+    const serversCollection = getCollection(db, 'servers');
+    
+    // Set a timeout promise to prevent hanging on this query
+    const timeoutPromise = new Promise<never>((_, reject) => {
+      setTimeout(() => reject(new Error('Final query timeout after 3 seconds')), 3000);
+    });
+    
+    // Create the actual query promise with a limit
+    const queryPromise = serversCollection.find({
+      id: { $in: serverIds }
+    }).limit(20).toArray();
+    
+    // Race the two promises
+    serverDocuments = await Promise.race([queryPromise, timeoutPromise]) as any[];
+    console.log(`[Servers API] Successfully fetched ${serverDocuments.length} servers`);
+  } catch (error) {
+    console.error('[Servers API] Error in final server fetch:', error);
+    // If we have a timeout or other error, try to fetch servers one by one
+    console.log('[Servers API] Attempting to fetch servers individually...');
+    
+    try {
+      // Get a fresh database connection to avoid timeout issues
+      const db = await connectToDatabase();
+      const serversCollection = getCollection(db, 'servers');
+      
+      // Fetch servers individually with timeout protection - only fetch up to 3 to stay within Vercel limits
+      const serverIdsToFetch = serverIds.slice(0, 3);
+      
+      console.log(`[Servers API] Attempting to fetch ${serverIdsToFetch.length} servers individually`);
+      
+      // Create an array of promises for individual server fetches
+      const individualFetchPromises = serverIdsToFetch.map(async (serverId: string) => {
+        try {
+          // Set a very short timeout for each individual query
+          const timeoutPromise = new Promise<never>((_, reject) => {
+            setTimeout(() => reject(new Error(`Individual query timeout for server ${serverId}`)), 1000);
+          });
+          
+          // Create the actual query promise with a lean projection to fetch only essential fields
+          const queryPromise = serversCollection.findOne(
+            { id: serverId },
+            { projection: { _id: 0, id: 1, name: 1, imageUrl: 1, inviteCode: 1, ownerId: 1 } }
+          );
+          
+          // Race the two promises
+          const server = await Promise.race([queryPromise, timeoutPromise]);
+          console.log(`[Servers API] Successfully fetched server ${serverId}`);
+          return server;
+        } catch (err) {
+          console.warn(`[Servers API] Failed to fetch individual server ${serverId}:`, err);
+          // Return a minimal server object instead of null
+          return { id: serverId, name: `Server ${serverId.substring(0, 6)}...`, minimal: true };
+        }
+      });
+      
+      // Wait for all individual fetches to complete (or timeout)
+      const results = await Promise.allSettled(individualFetchPromises);
+      
+      // Add successful results to serverDocuments
+      results.forEach((result) => {
+        if (result.status === 'fulfilled' && result.value) {
+          serverDocuments.push(result.value);
+        }
+      });
+    } catch (error) {
+      console.error('[Servers API] Error in individual server fetch:', error);
+    }
+    
+    // If we didn't get any servers or got fewer than expected, use emergency fallback
+    if (serverDocuments.length < serverIds.length) {
+      console.log('[Servers API] Using emergency fallback with basic server data');
+      
+      // Get the IDs of servers we didn't fetch successfully
+      const fetchedIds = new Set(serverDocuments.map(doc => doc.id));
+      const missingIds = serverIds.filter(id => !fetchedIds.has(id));
+      
+      // Create basic server objects for the missing servers
+      const fallbackServers = missingIds.map(id => ({
+        id,
+        name: `Server ${id.substring(0, 6)}...`,
+        description: 'Loading server data...',
+        fallback: true, // Mark as fallback for the client to know
+        icon: null,
+        ownerId: '',
+        _isTemporaryData: true
+      }));
+      
+      // Merge the successfully fetched servers with the fallback servers
+      serverDocuments = [...serverDocuments, ...fallbackServers];
+      console.log(`[Servers API] Added ${fallbackServers.length} fallback servers to the response`);
+    }
+  }
+
+  // Map and assert to the correct type for the response
+  const servers: Server[] = serverDocuments.map(doc => {
+    // Ensure the server has an id field (use _id as fallback)
+    if (!doc.id && doc._id) {
+      doc.id = doc._id.toString();
+    }
+    return doc as Server;
+  });
+  
+  return servers;
+}
+
+// GET /api/servers - Get servers for the authenticated user (or specific userId)
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const userId = searchParams.get('userId'); // Prioritize userId from query param
+
+    if (!userId) {
+      return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
+    }
+    
+    console.log(`[Servers API] Attempting to fetch servers for user: ${userId}`);
+    
+    // Define cache key for this user's servers
+    const cacheKey = `user_servers_${userId}`;
+    
+    // Use our cache system to get server IDs
+    const serverIds = await getCachedData<string[]>(
+      cacheKey,
+      async () => {
+        console.log(`[Servers API] Cache miss for user: ${userId}, fetching from database`);
+        return fetchServerIds(userId);
+      },
+      5 * 60 * 1000 // 5 minute cache TTL
+    );
+    
+    // If we have no server IDs, return an empty array
+    if (!serverIds || serverIds.length === 0) {
+      console.log(`[Servers API] No servers found for user: ${userId}`);
+      return NextResponse.json([]);
+    }
+    
+    console.log(`[Servers API] Found ${serverIds.length} server IDs for user: ${userId}`);
+    
+    // Now fetch the actual server data
+    const servers = await fetchServerDetails(serverIds);
+    
+    return NextResponse.json(servers);
+  } catch (error) {
+    console.error('[Servers API] Error in GET handler:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch servers', message: error instanceof Error ? error.message : 'Unknown error' },
+      { status: 500 }
+    );
+  }
+}
+
+// POST /api/servers - Create a new server
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { name, imageUrl, ownerId } = body;
+    
+    if (!name || !ownerId) {
+      return NextResponse.json({ error: 'Name and ownerId are required' }, { status: 400 });
+    }
+    
+    const db = await connectToDatabase();
+    const serversCollection = getCollection(db, 'servers');
+    const serverMembersCollection = getCollection(db, 'serverMembers');
+    const rolesCollection = getCollection(db, 'roles');
+    const channelsCollection = getCollection(db, 'channels');
+    const categoriesCollection = getCollection(db, 'categories');
+    
+    // Create server with unique ID
+    const serverId = uuidv4();
+    const inviteCode = Math.random().toString(36).substring(2, 10);
+    
+    const server: Server = {
+      id: serverId,
+      name,
+      imageUrl: imageUrl || null,
+      inviteCode,
+      ownerId,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    
+    // Create default roles
+    const ownerRole: Role = {
+      id: uuidv4(),
+      name: 'Owner',
+      color: '#FF0000',
+      serverId,
+      permissions: ['ADMINISTRATOR'],
+      position: 0,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    
+    const adminRole: Role = {
+      id: uuidv4(),
+      name: 'Admin',
+      color: '#FFA500',
+      serverId,
+      permissions: ['MANAGE_CHANNELS', 'MANAGE_ROLES', 'KICK_MEMBERS', 'BAN_MEMBERS'],
+      position: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    
+    const moderatorRole: Role = {
+      id: uuidv4(),
+      name: 'Moderator',
+      color: '#008000',
+      serverId,
+      permissions: ['KICK_MEMBERS', 'MANAGE_MESSAGES'],
+      position: 2,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    
+    const memberRole: Role = {
+      id: uuidv4(),
+      name: 'Member',
+      color: '#0000FF',
+      serverId,
+      permissions: ['SEND_MESSAGES', 'READ_MESSAGES'],
+      position: 3,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    
+    // Create default categories
+    const textCategoryId = uuidv4();
+    const textCategory: Category = {
+      id: textCategoryId,
+      name: 'Text Channels',
+      serverId,
+      position: 0,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    
+    const voiceCategoryId = uuidv4();
+    const voiceCategory: Category = {
+      id: voiceCategoryId,
+      name: 'Voice Channels',
+      serverId,
+      position: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    
+    // Create default channels
+    const generalChannelId = uuidv4();
+    const generalChannel: Channel = {
+      id: generalChannelId,
+      name: 'general',
+      type: 'TEXT',
+      serverId,
+      categoryId: textCategoryId,
+      position: 0,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    
+    const welcomeChannelId = uuidv4();
+    const welcomeChannel: Channel = {
+      id: welcomeChannelId,
+      name: 'welcome',
+      type: 'TEXT',
+      serverId,
+      categoryId: textCategoryId,
+      position: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    
+    const generalVoiceChannelId = uuidv4();
+    const generalVoiceChannel: Channel = {
+      id: generalVoiceChannelId,
+      name: 'General Voice',
+      type: 'VOICE',
+      serverId,
+      categoryId: voiceCategoryId,
+      position: 0,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    
+    // Create server member for the owner
+    const serverMember: ServerMember = {
+      id: uuidv4(),
+      userId: ownerId,
+      serverId,
+      roleIds: [ownerRole.id, adminRole.id, moderatorRole.id, memberRole.id],
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    
+    // Insert all documents
+    await serversCollection.insertOne(server);
+    await rolesCollection.insertMany([ownerRole, adminRole, moderatorRole, memberRole]);
+    await categoriesCollection.insertMany([textCategory, voiceCategory]);
+    await channelsCollection.insertMany([generalChannel, welcomeChannel, generalVoiceChannel]);
+    await serverMembersCollection.insertOne(serverMember);
+    
+    // Invalidate cache for this user's servers
+    invalidateCache(`user_servers_${ownerId}`);
+    
+    return NextResponse.json(server);
+  } catch (error) {
+    console.error('[Servers API POST] Error creating server:', error);
+    return NextResponse.json(
+      { error: 'Failed to create server', message: error instanceof Error ? error.message : 'Unknown error' },
+      { status: 500 }
+    );
+  }
+}
+
+// PATCH /api/servers/:serverId - Update a server
+export async function PATCH(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { serverId, name, imageUrl } = body;
+    
+    if (!serverId) {
+      return NextResponse.json({ error: 'Server ID is required' }, { status: 400 });
+    }
+    
+    if (!name && !imageUrl) {
+      return NextResponse.json({ error: 'At least one field to update is required' }, { status: 400 });
+    }
+    
+    const db = await connectToDatabase();
+    const serversCollection = getCollection(db, 'servers');
+    
+    // Find the server first to get the owner ID for cache invalidation
+    const existingServer = await serversCollection.findOne({ id: serverId });
+    
+    if (!existingServer) {
+      return NextResponse.json({ error: 'Server not found' }, { status: 404 });
+    }
+    
+    // Build update object
+    const updateData: Partial<Server> = {
+      updatedAt: new Date()
+    };
+    
+    if (name) updateData.name = name;
+    if (imageUrl !== undefined) updateData.imageUrl = imageUrl;
+    
+    // Update the server
+    await serversCollection.updateOne(
+      { id: serverId },
+      { $set: updateData }
+    );
+    
+    // Invalidate cache for the owner's servers
+    if (existingServer.ownerId) {
+      invalidateCache(`user_servers_${existingServer.ownerId}`);
+    }
+    
+    // Also invalidate any cache entries that might contain this server
+    invalidateCacheByPrefix('user_servers_');
+    
+    return NextResponse.json({ success: true, serverId });
+  } catch (error) {
+    console.error('[Servers API PATCH] Error updating server:', error);
+    return NextResponse.json(
+      { error: 'Failed to update server', message: error instanceof Error ? error.message : 'Unknown error' },
+      { status: 500 }
+    );
+  }
+}
+
+// DELETE /api/servers/:serverId - Delete a server
+export async function DELETE(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const serverId = searchParams.get('serverId');
+    
+    if (!serverId) {
+      return NextResponse.json({ error: 'Server ID is required' }, { status: 400 });
+    }
+    
+    const db = await connectToDatabase();
+    const serversCollection = getCollection(db, 'servers');
+    const serverMembersCollection = getCollection(db, 'serverMembers');
+    const rolesCollection = getCollection(db, 'roles');
+    const channelsCollection = getCollection(db, 'channels');
+    const categoriesCollection = getCollection(db, 'categories');
+    
+    // Find the server first to get the owner ID for cache invalidation
+    const existingServer = await serversCollection.findOne({ id: serverId });
+    
+    if (!existingServer) {
+      return NextResponse.json({ error: 'Server not found' }, { status: 404 });
+    }
+    
+    // Delete all related documents
+    await serversCollection.deleteOne({ id: serverId });
+    await serverMembersCollection.deleteMany({ serverId });
+    await rolesCollection.deleteMany({ serverId });
+    await channelsCollection.deleteMany({ serverId });
+    await categoriesCollection.deleteMany({ serverId });
+    
+    // Invalidate cache for the owner's servers
+    if (existingServer.ownerId) {
+      invalidateCache(`user_servers_${existingServer.ownerId}`);
+    }
+    
+    // Also invalidate any cache entries that might contain this server
+    invalidateCacheByPrefix('user_servers_');
+    
+    return NextResponse.json({ success: true, serverId });
+  } catch (error) {
+    console.error('[Servers API DELETE] Error deleting server:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete server', message: error instanceof Error ? error.message : 'Unknown error' },
+      { status: 500 }
+    );
+  }
+}

@@ -1,0 +1,61 @@
+// Firestore security rules
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Common functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    
+    // Messages collection
+    match /messages/{messageId} {
+      // Anyone can read messages
+      allow read: if isSignedIn();
+      
+      // Allow any signed-in user to create messages
+      // This is more permissive for development purposes
+      allow create: if isSignedIn();
+      
+      // Allow any signed-in user to update messages
+      // This is more permissive for development purposes
+      allow update: if isSignedIn();
+      
+      // Allow any signed-in user to delete messages
+      // This is more permissive for development purposes
+      allow delete: if isSignedIn();
+    }
+    
+    // Typing indicators collection
+    match /typing/{typingId} {
+      // Anyone can read typing indicators
+      allow read: if isSignedIn();
+      
+      // Allow any signed-in user to create/update typing status
+      // This is more permissive for development purposes
+      allow create, update: if isSignedIn();
+      
+      // Allow any signed-in user to delete typing status
+      // This is more permissive for development purposes
+      allow delete: if isSignedIn();
+    }
+    
+    // Users collection
+    match /users/{userId} {
+      // Users can read other users' profiles
+      allow read: if isSignedIn();
+      
+      // Users can only modify their own profile
+      allow write: if isOwner(userId);
+    }
+    
+    // Wildcard rule for development - allows access to all other collections
+    // Remove or restrict this in production
+    match /{collection}/{document=**} {
+      allow read, write: if isSignedIn();
+    }
+  }
+}

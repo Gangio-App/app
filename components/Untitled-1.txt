@@ -1,0 +1,240 @@
+[Docs](https://docs.livekit.io/home/)
+[GitHub](https://github.com/livekit/livekit)
+[Slack](https://livekit.io/join-slack)
+[Sign in with Cloud](https://cloud.livekit.io/login?r=/login_success?redirect_to=https://docs.livekit.io/home/client/tracks/screenshare/)
+[Home](https://docs.livekit.io/home/)
+[AI Agents](https://docs.livekit.io/agents/)
+[Telephony](https://docs.livekit.io/sip/)
+[Recipes](https://docs.livekit.io/recipes/)
+[Reference](https://docs.livekit.io/reference/)
+
+### Get Started
+[Intro to LiveKit](https://docs.livekit.io/home/get-started/intro-to-livekit/)
+[Rooms, participants, and tracks](https://docs.livekit.io/home/get-started/api-primitives/)
+[Authentication](https://docs.livekit.io/home/get-started/authentication/)
+
+### CLI
+[Installing CLI](https://docs.livekit.io/home/cli/cli-setup/)
+[Bootstrapping an application](https://docs.livekit.io/home/cli/templates/)
+
+### LiveKit SDKs
+[Connecting to LiveKit](https://docs.livekit.io/home/client/connect/)
+
+### Realtime media
+[Overview](https://docs.livekit.io/home/client/tracks/)
+[Camera & microphone](https://docs.livekit.io/home/client/tracks/publish/)
+[Screen sharing](https://docs.livekit.io/home/client/tracks/screenshare/)
+[Subscribing to tracks](https://docs.livekit.io/home/client/tracks/subscribe/)
+[Noise & echo cancellation](https://docs.livekit.io/home/client/tracks/noise-cancellation/)
+[End-to-end encryption](https://docs.livekit.io/home/client/tracks/encryption/)
+[Codecs & more](https://docs.livekit.io/home/client/tracks/advanced/)
+
+### State synchronization
+[Handling events](https://docs.livekit.io/home/client/events/)
+
+### Server APIs
+[Token generation](https://docs.livekit.io/home/server/generating-tokens/)
+[Room management](https://docs.livekit.io/home/server/managing-rooms/)
+[Participant management](https://docs.livekit.io/home/server/managing-participants/)
+[Webhooks](https://docs.livekit.io/home/server/webhooks/)
+
+### Recording & Composition
+[Overview](https://docs.livekit.io/home/egress/overview/)
+[Composite & web recordings](https://docs.livekit.io/home/egress/composite-recording/)
+[Recording participants](https://docs.livekit.io/home/egress/participant/)
+[Recording individual tracks](https://docs.livekit.io/home/egress/track/)
+[Output and streaming options](https://docs.livekit.io/home/egress/outputs/)
+[Auto Egress](https://docs.livekit.io/home/egress/autoegress/)
+[Custom recording templates](https://docs.livekit.io/home/egress/custom-template/)
+[Egress API](https://docs.livekit.io/home/egress/api/)
+[Examples](https://docs.livekit.io/home/egress/examples/)
+
+### Stream ingest
+[Overview](https://docs.livekit.io/home/ingress/overview/)
+[Encoder configuration](https://docs.livekit.io/home/ingress/configure-streaming-software/)
+
+### Cloud
+[Overview](https://docs.livekit.io/home/cloud/)
+[Architecture](https://docs.livekit.io/home/cloud/architecture/)
+[Sandbox](https://docs.livekit.io/home/cloud/sandbox/)
+[Quotas & limits](https://docs.livekit.io/home/cloud/quotas-and-limits/)
+[Billing](https://docs.livekit.io/home/cloud/billing/)
+[Configuring firewalls](https://docs.livekit.io/home/cloud/firewall/)
+[Analytics API](https://docs.livekit.io/home/cloud/analytics-api/)
+[Enhanced noise cancellation](https://docs.livekit.io/home/cloud/noise-cancellation/)
+
+### Self-hosting
+[Running locally](https://docs.livekit.io/home/self-hosting/local/)
+[Deployment overview](https://docs.livekit.io/home/self-hosting/deployment/)
+[Virtual machine](https://docs.livekit.io/home/self-hosting/vm/)
+[Kubernetes](https://docs.livekit.io/home/self-hosting/kubernetes/)
+[Distributed multi-region](https://docs.livekit.io/home/self-hosting/distributed/)
+[Firewall configuration](https://docs.livekit.io/home/self-hosting/ports-firewall/)
+[Benchmarks](https://docs.livekit.io/home/self-hosting/benchmark/)
+[Egress](https://docs.livekit.io/home/self-hosting/egress/)
+[Ingress](https://docs.livekit.io/home/self-hosting/ingress/)
+[SIP server](https://docs.livekit.io/home/self-hosting/sip-server/)
+
+# Screen sharing
+
+Publish your screen with LiveKit.
+On this page
+Overview
+Sharing browser audio
+Testing audio sharing
+
+## Overview
+LiveKit supports screen sharing natively across all platforms. Your screen is published as a video track, just like your camera. Some platforms support local audio sharing as well.
+The steps are somewhat different for each platform:
+
+```
+// The browser will prompt the user for access and offer a choice of screen, window, or tab await room.localParticipant.setScreenShareEnabled(true);
+```
+
+## Sharing browser audio
+Audio sharing is only possible in certain browsers. Check browser support on the [MDN compatibility table](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture).
+To share audio from a browser tab, you can use the createScreenTracks method with the audio option enabled:
+
+```
+createScreenTracks
+```
+
+
+```
+const tracks = await localParticipant.createScreenTracks({  audio: true,});
+tracks.forEach((track) => {  localParticipant.publishTrack(track);});
+```
+
+### Testing audio sharing
+#### Publisher
+When sharing audio, make sure you select a Browser Tab (not a Window) and ☑️ Share tab audio, otherwise no audio track will be generated when calling createScreenTracks:
+
+```
+createScreenTracks
+```
+
+
+#### Subscriber
+On the receiving side, you can use RoomAudioRenderer to play all audio tracks of the room automatically, [AudioTrack](https://github.com/livekit/components-js/blob/main/packages/react/src/components/participant/AudioTrack.tsx) or your own custom <audio> tag to add the track to the page. If you don't hear any sound, check you're receiving the track from the server:
+
+```
+RoomAudioRenderer
+```
+
+
+```
+AudioTrack
+```
+
+
+```
+<audio>
+```
+
+
+```
+room.getParticipantByIdentity('<participant_id>').getTrackPublication('screen_share_audio');
+```
+
+On this page
+Overview
+Sharing browser audio
+Testing audio sharing
+Previous
+[Camera & microphone](https://docs.livekit.io/home/client/tracks/publish/)
+Camera & microphone
+Up Next
+[Subscribing to tracks](https://docs.livekit.io/home/client/tracks/subscribe/)
+Subscribing to tracks
+[GitHub](https://github.com/livekit)
+[X](https://x.com/livekit)
+Developers
+[Documentation](https://docs.livekit.io/)
+[Security](https://livekit.io/security)
+[Slack](https://livekit.io/join-slack)
+[GitHub](https://github.com/livekit)
+[LLMs.txt](https://docs.livekit.io/llms.txt)
+Resources
+[Video Codecs](https://livekit.io/webrtc/codecs-guide)
+[Codec Bitrates](https://livekit.io/webrtc/bitrate-guide)
+[WebRTC Browser Test](https://livekit.io/webrtc/browser-test)
+[Connection Test](https://livekit.io/connection-test)
+Company
+[Blog](https://blog.livekit.io/)
+[Careers](https://livekit.io/careers)
+[About](https://livekit.io/about)
+[License](https://github.com/livekit/livekit/blob/master/LICENSE)
+© 2025 LiveKit. All rights reserved.
+[Terms of Service](https://livekit.io/legal/terms-of-service)
+[Cookie Policy](https://livekit.io/legal/cookie-policy)
+[Privacy Policy](https://livekit.io/legal/privacy-policy)
+[GitHub](https://github.com/livekit/livekit)
+[Slack](https://livekit.io/join-slack)
+[Sign in](https://cloud.livekit.io/login?r=/login_success?redirect_to=https://docs.livekit.io/home/client/tracks/screenshare/)
+
+### Get Started
+[Intro to LiveKit](https://docs.livekit.io/home/get-started/intro-to-livekit/)
+[Rooms, participants, and tracks](https://docs.livekit.io/home/get-started/api-primitives/)
+[Authentication](https://docs.livekit.io/home/get-started/authentication/)
+
+### CLI
+[Installing CLI](https://docs.livekit.io/home/cli/cli-setup/)
+[Bootstrapping an application](https://docs.livekit.io/home/cli/templates/)
+
+### LiveKit SDKs
+[Connecting to LiveKit](https://docs.livekit.io/home/client/connect/)
+
+### Realtime media
+[Overview](https://docs.livekit.io/home/client/tracks/)
+[Camera & microphone](https://docs.livekit.io/home/client/tracks/publish/)
+[Screen sharing](https://docs.livekit.io/home/client/tracks/screenshare/)
+[Subscribing to tracks](https://docs.livekit.io/home/client/tracks/subscribe/)
+[Noise & echo cancellation](https://docs.livekit.io/home/client/tracks/noise-cancellation/)
+[End-to-end encryption](https://docs.livekit.io/home/client/tracks/encryption/)
+[Codecs & more](https://docs.livekit.io/home/client/tracks/advanced/)
+
+### State synchronization
+[Handling events](https://docs.livekit.io/home/client/events/)
+
+### Server APIs
+[Token generation](https://docs.livekit.io/home/server/generating-tokens/)
+[Room management](https://docs.livekit.io/home/server/managing-rooms/)
+[Participant management](https://docs.livekit.io/home/server/managing-participants/)
+[Webhooks](https://docs.livekit.io/home/server/webhooks/)
+
+### Recording & Composition
+[Overview](https://docs.livekit.io/home/egress/overview/)
+[Composite & web recordings](https://docs.livekit.io/home/egress/composite-recording/)
+[Recording participants](https://docs.livekit.io/home/egress/participant/)
+[Recording individual tracks](https://docs.livekit.io/home/egress/track/)
+[Output and streaming options](https://docs.livekit.io/home/egress/outputs/)
+[Auto Egress](https://docs.livekit.io/home/egress/autoegress/)
+[Custom recording templates](https://docs.livekit.io/home/egress/custom-template/)
+[Egress API](https://docs.livekit.io/home/egress/api/)
+[Examples](https://docs.livekit.io/home/egress/examples/)
+
+### Stream ingest
+[Overview](https://docs.livekit.io/home/ingress/overview/)
+[Encoder configuration](https://docs.livekit.io/home/ingress/configure-streaming-software/)
+
+### Cloud
+[Overview](https://docs.livekit.io/home/cloud/)
+[Architecture](https://docs.livekit.io/home/cloud/architecture/)
+[Sandbox](https://docs.livekit.io/home/cloud/sandbox/)
+[Quotas & limits](https://docs.livekit.io/home/cloud/quotas-and-limits/)
+[Billing](https://docs.livekit.io/home/cloud/billing/)
+[Configuring firewalls](https://docs.livekit.io/home/cloud/firewall/)
+[Analytics API](https://docs.livekit.io/home/cloud/analytics-api/)
+[Enhanced noise cancellation](https://docs.livekit.io/home/cloud/noise-cancellation/)
+
+### Self-hosting
+[Running locally](https://docs.livekit.io/home/self-hosting/local/)
+[Deployment overview](https://docs.livekit.io/home/self-hosting/deployment/)
+[Virtual machine](https://docs.livekit.io/home/self-hosting/vm/)
+[Kubernetes](https://docs.livekit.io/home/self-hosting/kubernetes/)
+[Distributed multi-region](https://docs.livekit.io/home/self-hosting/distributed/)
+[Firewall configuration](https://docs.livekit.io/home/self-hosting/ports-firewall/)
+[Benchmarks](https://docs.livekit.io/home/self-hosting/benchmark/)
+[Egress](https://docs.livekit.io/home/self-hosting/egress/)
+[Ingress](https://docs.livekit.io/home/self-hosting/ingress/)
+[SIP server](https://docs.livekit.io/home/self-hosting/sip-server/)

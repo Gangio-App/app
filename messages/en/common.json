@@ -1,0 +1,918 @@
+{
+  "app": {
+    "name": "gvng.io",
+    "tagline": "Connect with your friends and communities.",
+    "version": "Version 0.1.0 -alpha",
+    "alphaTest": "Alpha Test",
+    "slogan": "The Meeting Point for Gamers"
+  },
+  "download": {
+    "title": "Download Gangio",
+    "closeButton": "Close",
+    "platformWindows": "Windows",
+    "platformMacOS": "macOS",
+    "platformLinux": "Linux",
+    "platformAndroid": "Android",
+    "platformIOS": "iOS",
+    "labelVersion": "Version",
+    "labelSize": "Size",
+    "labelInstructions": "Instructions",
+    "downloadButton": "Download",
+    "windows": {
+      "description": "Windows 10/11 (64-bit)",
+      "instructions": {
+        "1": "Download the GANGIO installer (.exe)",
+        "2": "Run the installer and follow the on-screen instructions",
+        "3": "Once installed, launch GANGIO from your desktop or start menu",
+        "4": "Log in with your account or create a new one",
+        "5": "Start connecting with your gaming communities!"
+      }
+    },
+    "macos": {
+      "description": "macOS 11.0+ (Apple Silicon & Intel)",
+      "instructions": {
+        "1": "Download the GANGIO disk image (.dmg)",
+        "2": "Open the disk image and drag the GANGIO app to your Applications folder",
+        "3": "Launch GANGIO from your Applications folder",
+        "4": "If prompted about security, go to System Preferences > Security & Privacy and allow the GANGIO app",
+        "5": "Log in with your account or create a new one"
+      }
+    },
+    "linux": {
+      "description": "Ubuntu, Debian, Fedora, and more",
+      "instructions": {
+        "1": "Download the appropriate package for your distribution (.deb, .rpm, or AppImage)",
+        "2": "For .deb: Run 'sudo dpkg -i gangio.deb'",
+        "3": "For .rpm: Run 'sudo rpm -i gangio.rpm'",
+        "4": "For AppImage: Make it executable with 'chmod +x gangio.AppImage' and run it",
+        "5": "Launch GANGIO and log in with your account"
+      }
+    },
+    "android": {
+      "description": "Android 8.0+",
+      "instructions": {
+        "1": "Download GANGIO from the Google Play Store",
+        "2": "After installation, open the app",
+        "3": "Log in with your account or create a new one",
+        "4": "Allow notifications for the best experience",
+        "5": "Start chatting with your gaming communities on the go!"
+      }
+    },
+    "ios": {
+      "description": "iPhone & iPad (iOS 14+)",
+      "instructions": {
+        "1": "Download GANGIO from the App Store",
+        "2": "After installation, open the app",
+        "3": "Log in with your account or create a new one",
+        "4": "Allow notifications when prompted",
+        "5": "Enjoy GANGIO on your iOS device!"
+      }
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "friends": "Friends",
+    "servers": "Servers",
+    "messages": "Messages",
+    "settings": "Settings",
+    "logout": "Logout",
+    "features": "Features",
+    "discover": "Discover",
+    "about": "About",
+    "careers": "Careers",
+    "download": "Download",
+    "login": "Login",
+    "openApp": "Open App"
+  },
+  "navigationBar": {
+    "title": "Navigation Bar",
+    "search": "Search",
+    "searchPlaceholder": "Search for friends, servers or messages",
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "megaMenu": {
+    "title": "Mega Menu",
+    "communication": "Communication",
+    "voiceChannels": "Voice Channels",
+    "voiceChannelsDesc": "Crystal clear voice chat for gaming",
+    "textChannels": "Text Channels",
+    "textChannelsDesc": "Rich messaging with emojis and media",
+    "directMessages": "Direct Messages",
+    "directMessagesDesc": "Private conversations with friends",
+    "gaming": "Gaming",
+    "gameIntegration": "Game Integration",
+    "gameIntegrationDesc": "Connect with Steam, Epic and more",
+    "gameOverlays": "In-Game Overlays",
+    "gameOverlaysDesc": "See who's talking without alt-tabbing",
+    "squadFinder": "Squad Finder",
+    "squadFinderDesc": "Find the perfect gaming team",
+    "company": "Company",
+    "aboutUs": "About Us",
+    "aboutUsDesc": "Our mission and story",
+    "careers": "Careers",
+    "careersDesc": "Join our growing team",
+    "blog": "Blog",
+    "blogDesc": "News and updates",
+    "resources": "Resources",
+    "changelog": "Changelog",
+    "changelogDesc": "Latest updates and features",
+    "status": "Status",
+    "statusDesc": "System status and metrics",
+    "faq": "FAQ",
+    "faqDesc": "Frequently asked questions",
+    "discoverPro": "Discover GANGIO Pro",
+    "proDesc": "Advanced features for serious gamers",
+    "learnMore": "Learn more"
+  },
+  "meetTheGang": {
+    "title": "Meet the GANG",
+    "subtitle": "The colorful characters behind Elivechit who bring personality and fun to our platform.",
+    "storyTitle": "The GANG Story",
+    "storyPart1": "Born from a shared passion for gaming and community, our mascots represent the diverse talents and personalities that make up the Elivechit team.",
+    "storyPart2": "Led by Fufu, this dynamic group works together to create the best possible platform for gamers and communities worldwide. Each member brings their unique skills and perspective to the table.",
+    "storyPart3": "Whether you're chatting with friends, joining a server, or exploring new communities, the GANG is there to make your experience better.",
+    "mascots": {
+      "fufu": {
+        "name": "Fufu",
+        "role": "Leader",
+        "description": "The visionary leader of the GANG, Fufu brings everyone together with strategic thinking and boundless enthusiasm."
+      },
+      "kazek": {
+        "name": "Kazek",
+        "role": "Tech Wizard",
+        "description": "The brilliant mind behind our technology, Kazek solves complex problems with innovative solutions."
+      },
+      "fela": {
+        "name": "Fela",
+        "role": "Creative Director",
+        "description": "With an eye for design and aesthetics, Fela ensures everything looks and feels perfect."
+      },
+      "bobby": {
+        "name": "Bobby",
+        "role": "Community Manager",
+        "description": "The friendly face of our community, Bobby makes sure everyone feels welcome and heard."
+      }
+    }
+  },
+  "footer": {
+    "description": "GANGIO is the ultimate communication platform for gamers. Connect with your friends, build communities, and elevate your gaming experience.",
+    "product": "Product",
+    "download": "Download",
+    "features": "Features",
+    "premium": "GANGIO Pro",
+    "status": "Status",
+    "changelog": "Changelog",
+    "company": "Company",
+    "aboutUs": "About Us",
+    "meetTheGang": "Meet the GANG",
+    "careers": "Careers",
+    "blog": "Blog",
+    "branding": "Branding",
+    "contact": "Contact",
+    "resources": "Resources",
+    "support": "Support",
+    "faq": "FAQ",
+    "communityGuidelines": "Community Guidelines",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "newsletter": {
+      "title": "Stay updated",
+      "description": "Subscribe to our newsletter for the latest updates, features, and news.",
+      "placeholder": "Enter your email address",
+      "subscribe": "Subscribe"
+    },
+    "copyright": "All rights reserved.",
+    "bottomLinks": {
+      "terms": "Terms",
+      "privacy": "Privacy",
+      "cookies": "Cookies",
+      "legal": "Legal"
+    }
+  },
+    "wiki": {
+      "title": "Gangio Wiki",
+      "search": "Search wiki articles...",
+      "articles": "Articles",
+      "welcome": "Welcome to Gangio Wiki",
+      "welcomeDesc": "Your comprehensive guide to using Gangio and connecting with your communities.",
+      "servers": {
+        "title": "Server Guide",
+        "shortDesc": "Learn to create, join and manage servers for communities."
+      },
+      "channels": {
+        "title": "Channel Guide",
+        "shortDesc": "Discover how to use different channel types for communication."
+      },
+      "voice": {
+        "title": "Voice & Video",
+        "shortDesc": "Use voice and video calls powered by LiveKit technology."
+      },
+      "roles": {
+        "title": "Roles & Permissions",
+        "shortDesc": "Set up roles and permissions to manage your community."
+      },
+      "guidelines": {
+        "title": "Community Guidelines",
+        "desc": "Please follow our community guidelines to ensure a positive experience for everyone.",
+        "commitment": "Gangio is committed to creating safe and inclusive spaces for all users."
+      },
+      "moderation": {
+        "title": "Moderation Commands",
+        "shortDesc": "Learn about moderation commands and how to use them.",
+        "commands": {
+          "kick": "Kick a member from the server",
+          "ban": "Ban a member from the server",
+          "mute": "Mute a member for a certain period"
+        }
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "categories": {
+        "userSettings": "USER SETTINGS",
+        "appSettings": "APP SETTINGS",
+        "info": "INFO"
+      },
+      "tabs": {
+        "myAccount": "My Account",
+        "profile": "Profile",
+        "connections": "Connections",
+        "privacySafety": "Privacy & Safety",
+        "appearance": "Appearance",
+        "notifications": "Notifications",
+        "voiceVideo": "Voice & Video",
+        "keybinds": "Keybinds",
+        "language": "Language",
+        "experimental": "Experimental Features",
+        "feedback": "Feedback",
+        "changelog": "Changelog",
+        "sessions": "Active Sessions"
+      },
+      "notImplemented": "This settings panel has not been implemented yet."
+    },
+    "changelog": {
+      "title": "Changelog",
+      "viewFull": "View Full Changelog",
+      "viewAllUpdates": "View All Updates",
+      "filters": {
+        "all": "All Updates"
+      },
+      "tags": {
+        "features": "Features",
+        "performance": "Performance",
+        "bugfixes": "Bug Fixes",
+        "security": "Security"
+      },
+      "types": {
+        "feature": "New Feature",
+        "improvement": "Improvement",
+        "fix": "Bug Fix",
+        "security": "Security"
+      }
+    },
+    "appearance": {
+      "title": "Appearance Settings",
+      "theme": {
+        "title": "Theme",
+        "dark": "Dark",
+        "light": "Light",
+        "system": "Sync with System"
+      },
+      "colorScheme": {
+        "title": "Color Scheme",
+        "blue": "Blue",
+        "green": "Green",
+        "purple": "Purple",
+        "pink": "Pink",
+        "red": "Red",
+        "orange": "Orange",
+        "custom": "Custom"
+      },
+      "customColors": {
+        "title": "Custom Colors",
+        "enable": "Use custom colors",
+        "accent": "Accent Color",
+        "background": "Background Color",
+        "foreground": "Foreground Color"
+      },
+      "fontSize": {
+        "title": "Font Size",
+        "small": "Small",
+        "medium": "Medium",
+        "large": "Large"
+      },
+      "fontFamily": {
+        "title": "Font Family"
+      },
+      "fontWeight": {
+        "title": "Font Weight"
+      },
+      "preview": "Preview"
+    },
+    "language": {
+      "title": "Language Settings",
+      "displayLanguage": {
+        "title": "Display Language",
+        "autoDetect": "Automatically detect language from browser settings",
+        "helpText": "This setting changes the language of the user interface. Changes will take effect after reloading the app."
+      },
+      "regionalFormat": {
+        "title": "Regional Format",
+        "dateFormat": "Date Format",
+        "timeFormat": "Time Format",
+        "helpText": "These settings determine how dates and times are displayed throughout the app."
+      },
+      "textTranslation": {
+        "title": "Text & Translation",
+        "spellCheck": "Enable spell check",
+        "autoTranslate": "Automatically translate messages",
+        "threshold": "Translation Confidence Threshold",
+        "thresholdLow": "Low",
+        "thresholdHigh": "High",
+        "thresholdHelp": "Higher threshold means translations will only be shown when the system is more confident about their accuracy.",
+        "downloadPack": "Download Language Pack",
+        "contribute": "Contribute to Translations"
+      },
+      "preview": {
+        "title": "Preview",
+        "currentLanguage": "Current Language",
+        "dateFormat": "Date Format Example",
+        "timeFormat": "Time Format Example",
+        "spellCheck": "Spell Check",
+        "autoTranslation": "Auto Translation",
+        "enabled": "Enabled",
+        "disabled": "Disabled",
+        "withThreshold": "Enabled ({threshold}% threshold)"
+      }
+    },
+    "voiceVideo": {
+      "title": "Voice & Video Settings",
+      "inputDevices": {
+        "title": "Input Devices",
+        "microphone": "Microphone",
+        "inputVolume": "Input Volume Level",
+        "noiseSupression": "Noise Suppression",
+        "echoCancellation": "Echo Cancellation",
+        "autoGain": "Automatic Gain Control",
+        "testMic": "Test Microphone",
+        "permissionRequired": "Microphone access is required for audio settings. Please grant permission.",
+        "requestAccess": "Request Access"
+      },
+      "outputDevices": {
+        "title": "Output Devices",
+        "speaker": "Speaker",
+        "outputVolume": "Output Volume Level",
+        "testSpeaker": "Test Speaker"
+      },
+      "videoSettings": {
+        "title": "Video Settings",
+        "camera": "Camera",
+        "quality": "Video Quality",
+        "qualityLow": "Low (320x240)",
+        "qualityMedium": "Medium (640x480)",
+        "qualityHigh": "High (960x540)",
+        "qualityHD": "HD (1280x720)",
+        "mirror": "Video Mirroring",
+        "backgroundBlur": "Background Blur",
+        "blurAmount": "Blur Amount",
+        "startPreview": "Start Video Preview",
+        "stopPreview": "Stop Video Preview",
+        "previewPlaceholder": "Video preview will appear here",
+        "permissionRequired": "Camera access is required for video settings. Please grant permission.",
+        "requestAccess": "Request Access"
+      },
+      "voiceActivity": {
+        "title": "Voice Activity",
+        "pushToTalk": "Push to Talk",
+        "voiceDetection": "Voice Activity Detection",
+        "releaseDelay": "Release Delay",
+        "sensitivity": "Sensitivity",
+        "sensitivityHelp": "Higher sensitivity means your microphone will activate more easily."
+      }
+    },
+    "friends": {
+      "title": "Friends",
+      "online": "Online",
+      "all": "All",
+      "pending": "Pending",
+      "blocked": "Blocked",
+      "addFriend": "Add Friend",
+      "incomingRequests": "Incoming Friend Requests",
+      "outgoingRequests": "Outgoing Friend Requests",
+      "noFriends": "No friends found. Add some friends to get started!",
+      "noRequests": "No pending requests",
+      "accept": "Accept",
+      "ignore": "Ignore",
+      "cancel": "Cancel",
+      "message": "Message",
+      "unblock": "Unblock"
+    },
+    "messages": {
+      "title": "Messages",
+      "noMessages": "No messages yet",
+      "startConversation": "Start a conversation with {name}",
+      "typing": "{name} is typing...",
+      "sendMessage": "Send a message",
+      "newMessages": "New Messages"
+    },
+    "dashboard": {
+      "welcome": "Welcome",
+      "welcomeBack": "Welcome back, {name}!",
+      "quickActions": "Quick Actions",
+      "startChat": "Start Chat",
+      "createServer": "Create Server",
+      "joinServer": "Join Server",
+      "findFriends": "Find Friends",
+      "recentActivity": "Recent Activity",
+      "onlineFriends": "Online Friends",
+      "pendingRequests": "Pending Requests",
+      "viewAll": "View All",
+      "noOnlineFriends": "No friends online currently",
+      "noPendingRequests": "No pending requests",
+      "serverActivity": "Server Activity",
+      "noServerActivity": "No recent server activity",
+      "directMessages": "Direct Messages",
+      "noDirectMessages": "No recent direct messages"
+    },
+    "landing": {
+      "hero": {
+        "badge": "Next Generation Gaming Platform",
+        "title": "Elevate Your Gaming Experience",
+        "subtitle": "The next generation gamer platform designed to connect, communicate and win together with your gaming friends.",
+        "downloadNow": "DOWNLOAD NOW",
+        "learnMore": "Learn More"
+      },
+      "features": {
+        "title": "Features Designed for Gamers",
+        "subtitle": "Everything you need to build your gaming community and stay ahead of the competition.",
+        "realTimeChat": {
+          "title": "Real-Time Chat",
+          "description": "Experience lightning-fast messaging with our cutting-edge real-time communication infrastructure."
+        },
+        "serverCommunities": {
+          "title": "Server Communities",
+          "description": "Create or join servers, organize channels, and build your community around shared interests."
+        },
+        "voiceChannels": {
+          "title": "Crystal-Clear Voice",
+          "description": "High-quality, low-latency voice channels for seamless team communication and casual hangouts."
+        },
+        "gifSupport": {
+          "title": "Express with GIFs!",
+          "description": "Bring your chats to life! Easily search, preview, and send GIFs to make conversations more engaging and fun."
+        },
+        "gamerFocused": {
+          "title": "Gamer Focused",
+          "description": "Built by gamers, for gamers. Our platform is designed to meet the unique needs of the gaming community."
+        },
+        "security": {
+          "title": "Security & Privacy",
+          "description": "We take your security and privacy seriously. Our platform is built with robust security measures to protect your data."
+        },
+        "voiceChat": {
+          "title": "Crystal Clear Voice Chat",
+          "description": "Low-latency, high-quality voice communication that keeps you connected with your team during intense gaming sessions."
+        },
+        "screenSharing": {
+          "title": "Screen Sharing",
+          "description": "Share your epic gaming moments, strategies or training with high-quality screen sharing in real time with friends."
+        },
+        "community": {
+          "title": "Gaming Communities",
+          "description": "Create and join gaming communities dedicated to your favorite games, find teammates and build lasting friendships."
+        },
+        "richText": {
+          "title": "Rich Text Chat",
+          "description": "Express yourself with rich text formatting, emoji reactions, GIFs and file sharing in our modern chat interface."
+        },
+        "gameIntegration": {
+          "title": "Game Integration",
+          "description": "Connect your Steam account and show off what you're playing. Automatic game detection and rich presence features.",
+          "features": [
+            "Rich presence for 100+ popular games",
+            "One-click join to your friends' game sessions",
+            "Automatic game detection",
+            "Integration with Steam, Epic Games and more"
+          ]
+        }
+      },
+      "multilanguage": {
+        "badge": "Global Reach",
+        "title": "Now Multilingual",
+        "subtitle": "Connect with gamers around the world in their own languages.",
+        "helpTranslate": "Help Translate"
+      },
+      "community": {
+        "title": "Join Our Growing Community",
+        "subtitle": "Connect with gamers around the world, share gaming tips and make new friends.",
+        "members": "Active Member",
+        "servers": "Server",
+        "messages": "Daily Message",
+        "createAccount": "Create Account",
+        "downloadNow": "DOWNLOAD NOW",
+        "downloadClient": "Download Client",
+        "signIn": "Sign In",
+        "version": "Version",
+        "joinCommunity": "Join Community"
+      },
+      "moreFeatures": {
+        "customServers": {
+          "title": "Custom Servers",
+          "description": "Create custom servers for your community, organize channels and fully personalize your gaming experience."
+        },
+        "lowLatency": {
+          "title": "Low Latency",
+          "description": "Optimized network infrastructure that minimizes lag and provides uninterrupted communication during gameplay."
+        },
+        "richPresence": {
+          "title": "Rich Presence",
+          "description": "See what games your friends are playing, how long they've been playing and if they're ready to join."
+        },
+        "crossPlatform": {
+          "title": "Cross-Platform Support",
+          "description": "Stay connected across any device with seamless integration between Windows, macOS, Linux, iOS and Android."
+        }
+      },
+      "callToAction": {
+        "title": "Ready to Elevate Your Gaming Experience?",
+        "subtitle": "Join thousands of gamers who use our platform to connect, communicate and win together.",
+        "createAccount": "Create Account",
+        "downloadNow": "DOWNLOAD NOW",
+        "downloadClient": "Download Client",
+        "signIn": "Sign In",
+        "version": "Version"
+      }
+    },
+    "translations": {
+      "title": "Help with Translation",
+      "subtitle": "Join our community effort to make gvng.io accessible to gamers around the world.",
+      "progress": "Translation Progress",
+      "howToContribute": "How to Contribute",
+      "fileStructure": "Translation File Structure",
+      "startContributing": "Start Contributing",
+      "steps": {
+        "fork": "Fork our repository",
+        "locate": "Locate the translation files",
+        "translate": "Translate the texts",
+        "submit": "Submit a pull request"
+      },
+      "notes": {
+        "placeholders": "Leave placeholders as they are",
+        "structure": "Maintain the same JSON structure and keys",
+        "keysOnly": "Only translate the values, not the keys",
+        "test": "Test your translations in the app by changing the language"
+      }
+    },
+    "downloadPage": {
+      "officialDownloads": "Official Downloads",
+      "title": {
+        "first": "Use GANGIO",
+        "second": "Everywhere"
+      },
+      "subtitle": "Download our app for any platform and stay connected with your gaming communities everywhere.",
+      "downloadNow": "Download Now",
+      "downloadButton": "Download",
+      "launchWebApp": "Launch Web App",
+      "platformTypes": {
+        "desktop": "Desktop",
+        "mobile": "Mobile",
+        "web": "Web"
+      },
+      "recommended": "Recommended",
+      "version": "Version",
+      "size": "Size",
+      "systemRequirements": "System Requirements",
+      "featuresTitle": {
+        "first": "Powerful Features",
+        "second": "for Gamers"
+      },
+      "integrationsTitle": "Integrated with Your Favorite Gaming Platforms",
+      "faqTitle": "Frequently Asked Questions",
+      "platforms": {
+        "windows": {
+          "description": "Windows 10/11 (64-bit)",
+          "requirements": "Windows 10 or later, 4GB RAM, 500MB disk space"
+        },
+        "macos": {
+          "description": "macOS 11.0+ (Apple Silicon and Intel)",
+          "requirements": "macOS 11.0 or later, 4GB RAM, 500MB disk space"
+        },
+        "linux": {
+          "description": "Ubuntu, Debian, Fedora and others",
+          "requirements": "Ubuntu 20.04+, Debian 10+ or other compatible distros"
+        },
+        "android": {
+          "description": "Android 8.0+",
+          "requirements": "Android 8.0 or later, 2GB RAM"
+        },
+        "ios": {
+          "description": "iPhone and iPad (iOS 14+)",
+          "requirements": "iOS 14.0 or later, compatible with iPhone, iPad and iPod touch"
+        },
+        "web": {
+          "name": "Web App",
+          "description": "No download required",
+          "version": "Latest",
+          "size": "None",
+          "requirements": "Modern browser (Chrome, Firefox, Safari, Edge)"
+        }
+      },
+      "download": {
+        "installationGuide": "Installation Guide",
+        "downloadFor": "Download for {{platform}}",
+        "windows": {
+          "description": "Windows 10/11 (64-bit)",
+          "instructions": {
+            "1": "Download the GANGIO installer (.exe)",
+            "2": "Run the installer and follow the on-screen instructions",
+            "3": "After installation, launch the GANGIO app from your desktop or start menu",
+            "4": "Sign in with your account or create a new one",
+            "5": "Start connecting with your gaming communities!"
+          }
+        },
+        "macos": {
+          "description": "macOS 11.0+ (Apple Silicon and Intel)",
+          "instructions": {
+            "1": "Download the GANGIO disk image (.dmg)",
+            "2": "Open the disk image and drag the GANGIO app to your Applications folder",
+            "3": "Launch the GANGIO app from your Applications folder",
+            "4": "If you get a security warning, go to System Preferences > Security & Privacy and allow GANGIO",
+            "5": "Sign in with your account or create a new one"
+          }
+        },
+        "linux": {
+          "description": "Ubuntu, Debian, Fedora and more",
+          "instructions": {
+            "1": "Download the appropriate package for your distribution (.deb, .rpm or AppImage)",
+            "2": "For .deb: Run sudo dpkg -i gangio.deb",
+            "3": "For .rpm: Run sudo rpm -i gangio.rpm",
+            "4": "For AppImage: Make executable with chmod +x gangio.AppImage and run it",
+            "5": "Launch the GANGIO app and sign in with your account"
+          }
+        },
+        "android": {
+          "description": "Android 8.0+",
+          "instructions": {
+            "1": "Download the GANGIO app from Google Play Store",
+            "2": "Open the app after installation",
+            "3": "Sign in with your account or create a new one",
+            "4": "Allow notifications for best experience",
+            "5": "Start chatting with your gaming communities on the go!"
+          }
+        },
+        "ios": {
+          "description": "iPhone and iPad (iOS 14+)",
+          "instructions": {
+            "1": "Download the GANGIO app from the App Store",
+            "2": "Open the app after installation",
+            "3": "Sign in with your account or create a new one",
+            "4": "Allow notifications when prompted",
+            "5": "Enjoy GANGIO on your iOS device!"
+          }
+        }
+      },
+      "features": {
+        "voiceChat": {
+          "title": "Crystal Clear Voice Chat",
+          "description": "Low-latency voice communication with noise suppression"
+        },
+        "gameIntegration": {
+          "title": "Game Integration",
+          "description": "Connect with Steam, Epic Games and other platforms"
+        },
+        "community": {
+          "title": "Community Building",
+          "description": "Build and manage your gaming communities with powerful tools"
+        },
+        "security": {
+          "title": "Security & Privacy",
+          "description": "End-to-end encryption and robust privacy controls"
+        },
+        "performance": {
+          "title": "Performance Boost",
+          "description": "Optimized for gaming with minimal resource usage"
+        },
+        "crossPlatform": {
+          "title": "Cross-Platform Sync",
+          "description": "Seamless experience across all your devices"
+        }
+      },
+      "faq": {
+        "free": {
+          "question": "Is GANGIO free to use?",
+          "answer": "Yes, downloading and using GANGIO is completely free. We offer premium subscriptions with additional features, but core functionality is free forever."
+        },
+        "multipleDevices": {
+          "question": "Can I use GANGIO on multiple devices?",
+          "answer": "Absolutely! Your account syncs across all platforms so you can switch seamlessly between desktop, mobile and web versions."
+        },
+        "security": {
+          "question": "How secure is GANGIO?",
+          "answer": "We use industry-standard encryption and security practices to keep your data safe. Your privacy is our priority."
+        },
+        "updates": {
+          "question": "How do I update GANGIO?",
+          "answer": "The app automatically checks for updates on startup. You can also manually check for updates in the settings menu."
+        }
+      }
+    },
+    "login": {
+      "welcomeBack": "Welcome Back",
+      "subtitle": "Sign in to gvng.io and connect with your community",
+      "email": "Email",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot your password?",
+      "signIn": "Sign in",
+      "loggingIn": "Signing in...",
+      "orSignInWith": "OR SIGN IN WITH",
+      "signInWithSteam": "Sign in with Steam",
+      "signInWithGoogle": "Sign in with Google",
+      "signInWithGithub": "Sign in with GitHub",
+      "signInWithFacebook": "Sign in with Facebook",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "loginSuccessful": "Login successful!",
+      "redirecting": "Redirecting you to the dashboard...",
+      "welcomeMessage": "We're so excited to see you again! Sign in to access your communities and pick up where you left off.",
+      "photoCredit": "Photo:",
+      "on": "on",
+      "language": "Language"
+    },
+    "signup": {
+      "createAccount": "Create Account",
+      "subtitle": "Join gvng.io and connect with your community",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "termsAgreement": "By registering, you agree to our:",
+      "termsLink": "Terms and Conditions",
+      "createAccountButton": "Create Account",
+      "creatingAccount": "Creating Account...",
+      "alreadyHaveAccount": "Already have an account?",
+      "login": "Sign in",
+      "accountCreated": "Account created successfully!",
+      "redirectingToLogin": "Redirecting you to login page...",
+      "connectWithCommunity": "Connect with your gaming community",
+      "joinThousands": "Join thousands of gamers on gvng.io - the next generation platform for gaming communities.",
+      "features": {
+        "createJoinServers": {
+          "title": "Create & join servers",
+          "description": "Create your own gaming community or join existing ones"
+        },
+        "communication": {
+          "title": "Text, voice & video chat",
+          "description": "Communicate with your friends in real time"
+        },
+        "sharing": {
+          "title": "Share gaming moments",
+          "description": "Upload screenshots, clips and stream gameplay"
+        }
+      },
+      "language": "Language"
+    },
+    "common": {
+      "loading": "Loading",
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "confirm": "Confirm",
+      "apply": "Apply"
+    },
+    "account": {
+      "myAccount": "My Account",
+      "accountInformation": "ACCOUNT INFORMATION",
+      "username": "USERNAME",
+      "email": "EMAIL",
+      "password": "PASSWORD",
+      "twoFactorAuthentication": "TWO-FACTOR AUTHENTICATION",
+      "notEnabled": "Not enabled",
+      "enable": "Enable",
+      "change": "Change",
+      "reveal": "Reveal",
+      "noEmailSet": "No email set",
+      "editProfile": "Edit Profile",
+      "clickToChangeStatus": "Click to change your status",
+      "accountManagement": "ACCOUNT MANAGEMENT",
+      "accountManagementDescription": "You can disable or delete your account at any time. This will log you out and completely delete your account including your chat history and friends.",
+      "disableAccount": "Disable Account",
+      "disableAccountDescription": "You won't be able to access your account unless you contact support - but your data won't be deleted.",
+      "deleteAccount": "Delete Account",
+      "deleteAccountDescription": "Your account and all your data (including your messages and friends list) will be queued for deletion. A confirmation email will be sent - you can cancel this within 7 days by contacting support.",
+      "status": {
+        "online": "online",
+        "idle": "idle",
+        "dnd": "do not disturb",
+        "focus": "focus",
+        "invisible": "invisible",
+        "offline": "offline"
+      },
+      "userNotFound": "User not found. Please sign in again."
+    },
+    "status": {
+      "online": "online",
+      "idle": "idle",
+      "doNotDisturb": "do not disturb",
+      "focus": "focus",
+      "invisible": "invisible",
+      "offline": "offline"
+    },
+    "members": {
+      "pleaseLogin": "Please sign in to see members.",
+      "noPermission": "You don't have permission to view members of this server.",
+      "online": "Online",
+      "offline": "Offline",
+      "all": "All Members",
+      "pending": "Pending Members",
+      "banned": "Banned Members"
+    },
+    "features": {
+      "designedForGamers": "Designed for Gamers",
+      "title": "Features",
+      "subtitle": "Discover all the powerful features that make GANGIO the best communication platform for gamers.",
+      "sections": {
+        "communication": {
+          "title": "Communication",
+          "subtitle": "Stay connected with your team through our powerful communication tools."
+        },
+        "voiceChat": {
+          "title": "Crystal Clear Voice Chat",
+          "description": "Experience low-latency, high-quality voice communication that keeps you connected with your team during intense gaming sessions.",
+          "features": [
+            "Noise suppression for clear communication",
+            "Echo cancellation technology",
+            "Adjustable input sensitivity",
+            "Push-to-talk and voice activation modes"
+          ]
+        },
+        "screenSharing": {
+          "title": "Screen Sharing",
+          "description": "Share your gaming experience with friends in real time. Perfect for strategy discussions, showing off your achievements or helping teammates.",
+          "features": [
+            "High quality, low-latency streaming",
+            "Share entire screen or specific application",
+            "Adjustable resolution and frame rate",
+            "Stream to up to 50 viewers simultaneously"
+          ]
+        },
+        "gaming": {
+          "title": "Gaming",
+          "subtitle": "Enhance your gaming experience with features designed specifically for gamers."
+        },
+        "gameIntegration": {
+          "title": "Game Integration",
+          "description": "Connect GANGIO with your favorite games for a seamless experience. Show what you're playing, join your friends' games and more.",
+          "features": [
+            "Rich presence for 100+ popular games",
+            "One-click join to your friends' game sessions",
+            "Automatic game detection",
+            "Integration with Steam, Epic Games and more"
+          ]
+        }
+      }
+    },
+    "errors": {
+      "general": "Something went wrong",
+      "notFound": "Page not found",
+      "unauthorized": "You must be signed in to view this page",
+      "forbidden": "You don't have permission to access this resource",
+      "networkError": "Network error. Please check your connection and try again.",
+      "tryAgain": "Try Again"
+    },
+    "squadFinder": {
+      "title": "Squad Finder",
+      "createSquad": "Create Squad",
+      "joinSquad": "Join Squad",
+      "leaveSquad": "Leave Squad",
+      "waitingForOthers": "Waiting for others to join...",
+      "squadRoom": "Squad Room",
+      "skillLevel": "Skill Level",
+      "region": "Region",
+      "settings": {
+        "title": "Squad Finder Settings",
+        "displayName": "Display Name",
+        "displayNameDesc": "This name will be shown to other players in Squad Finder",
+        "steamProfile": "Steam Profile URL",
+        "steamProfileDesc": "Link to your Steam profile for verification",
+        "cs2Rating": "CS2 Rating (ELO)",
+        "gamingRegion": "Primary Gaming Region",
+        "gamingRegionDesc": "Choose the region where you primarily play"
+      }
+    },
+    "actions": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "edit": "Edit",
+      "apply": "Apply",
+      "confirm": "Confirm",
+      "back": "Back",
+      "next": "Next",
+      "finish": "Finish"
+    }
+  }

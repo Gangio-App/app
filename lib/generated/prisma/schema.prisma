@@ -1,0 +1,248 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_POSTGRES")
+}
+
+// User model
+model User {
+  id              String    @id @default(uuid())
+  name            String?
+  discriminator   String? // 4-digit discriminator (e.g. #1234)
+  email           String?   @unique
+  emailVerified   DateTime?
+  passwordHash    String? // Hashed password
+  image           String?
+  avatarUrl       String?
+  bannerUrl       String? // Profile banner
+  status          String?   @default("offline") // online, offline, idle, dnd, focus, invisible
+  customStatus    String? // User's custom status message
+  isBot           Boolean?  @default(false)
+  game            String? // Current game being played
+  position        String? // Job position or title
+  company         String? // Company or organization
+  bio             String? // User bio
+  pronouns        String? // User pronouns
+  badges          String[]  @default([]) // Special badges
+  isNew           Boolean?  @default(true) // Flag for new users
+  steamId         String? // User's unique Steam ID
+  steamProfileUrl String? // URL to user's Steam profile
+  steamAvatarUrl  String? // URL to user's Steam avatar
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  lastSeen        DateTime?
+
+  // Relations
+  servers        Server[]                  @relation("UserServers") // Servers owned by the user
+  memberships    ServerMember[] // Servers the user is a member of
+  messages       Message[] // Messages sent by the user
+  directMessages DirectMessage[] // Direct messages sent by the user
+  conversations  ConversationParticipant[] // Conversations the user is part of
+
+  // Friend relations
+  friendIds              String[] @default([]) // IDs of friends
+  incomingFriendRequests String[] @default([]) // IDs of users who sent friend requests
+  outgoingFriendRequests String[] @default([]) // IDs of users who received friend requests
+}
+
+// Server model
+model Server {
+  id               String   @id @default(uuid())
+  name             String
+  description      String?
+  imageUrl         String? // Server icon
+  bannerUrl        String? // Server banner
+  inviteCode       String?  @unique
+  isOfficial       Boolean  @default(false)
+  isVerified       Boolean  @default(false)
+  isPartnered      Boolean  @default(false)
+  tags             String[] @default([])
+  defaultChannelId String?
+  memberCount      Int? // Number of members in the server
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Relations
+  ownerId    String
+  owner      User           @relation("UserServers", fields: [ownerId], references: [id], onDelete: Cascade)
+  members    ServerMember[]
+  channels   Channel[]
+  categories Category[]
+  roles      Role[] // Added relation to Role model
+
+  @@index([ownerId])
+}
+
+// Server Member model
+model ServerMember {
+  id        String   @id @default(uuid())
+  role      String   @default("MEMBER") // OWNER, ADMIN, MODERATOR, MEMBER
+  nickname  String?
+  roleIds   String[] @default([])
+  joinedAt  DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  userId   String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  serverId String
+  server   Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, serverId])
+  @@index([userId])
+  @@index([serverId])
+}
+
+// Role model
+model Role {
+  id        String   @id @default(uuid())
+  name      String
+  color     String   @default("#99AAB5")
+  position  Int      @default(0)
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Permissions
+  permissions Json @default("{}")
+
+  // Relations
+  serverId String
+  server   Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
+
+  @@index([serverId])
+}
+
+// Category model
+model Category {
+  id        String   @id @default(uuid())
+  name      String
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  serverId String
+  server   Server    @relation(fields: [serverId], references: [id], onDelete: Cascade)
+  channels Channel[]
+
+  @@index([serverId])
+}
+
+// Channel model
+model Channel {
+  id             String   @id @default(uuid())
+  name           String
+  type           String   @default("text") // text, voice, video, announcement, forum
+  position       Int      @default(0)
+  topic          String? // Channel topic/description
+  slowMode       Int? // Slow mode delay in seconds
+  isPrivate      Boolean  @default(false)
+  allowedRoleIds String[] @default([])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  // Relations
+  serverId   String
+  server     Server    @relation(fields: [serverId], references: [id], onDelete: Cascade)
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  messages   Message[]
+
+  @@index([serverId])
+  @@index([categoryId])
+}
+
+// Message model
+model Message {
+  id          String    @id @default(uuid())
+  content     String
+  attachments Json? // Array of attachment objects
+  mentions    String[]  @default([])
+  isPinned    Boolean   @default(false)
+  edited      Boolean   @default(false)
+  editedAt    DateTime?
+  replyTo     String? // ID of message being replied to
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  channelId String
+  channel   Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  serverId  String // Denormalized for faster queries
+
+  @@index([channelId])
+  @@index([userId])
+  @@index([serverId])
+}
+
+// Conversation model (for direct messages)
+model Conversation {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  participants   ConversationParticipant[]
+  directMessages DirectMessage[]
+}
+
+// ConversationParticipant model
+model ConversationParticipant {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  userId         String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, conversationId])
+  @@index([userId])
+  @@index([conversationId])
+}
+
+// DirectMessage model
+model DirectMessage {
+  id          String    @id @default(uuid())
+  content     String
+  attachments Json? // Array of attachment objects
+  mentions    String[]  @default([])
+  read        Boolean   @default(false)
+  edited      Boolean   @default(false)
+  editedAt    DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  userId         String // Sender
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+  @@index([userId])
+}
+
+// Badge model
+model Badge {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  icon        String
+  color       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

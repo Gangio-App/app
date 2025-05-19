@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Discord-inspired color palette */
+:root {
+  /* Font settings */
+  --font-family: 'Inter', sans-serif;
+  --font-weight: 400;
+  --font-size: 16px;
+  --background-primary: #36393f;
+  --background-secondary: #2f3136;
+  --background-secondary-alt: #292b2f;
+  --background-tertiary: #202225;
+  --background-accent: #4f545c;
+  --background-floating: #18191c;
+  --background-nested-floating: #2f3136;
+  --background-mobile-primary: #36393f;
+  --background-mobile-secondary: #2f3136;
+  --channeltextarea-background: #40444b;
+  --deprecated-card-bg: rgba(32, 34, 37, 0.6);
+  --deprecated-quickswitcher-input-background: #72767d;
+  --deprecated-quickswitcher-input-placeholder: hsla(0, 0%, 100%, 0.3);
+  --deprecated-text-input-bg: rgba(0, 0, 0, 0.1);
+  --deprecated-text-input-border: rgba(0, 0, 0, 0.3);
+  --background-modifier-accent: hsla(0, 0%, 100%, 0.06);
+  --elevation-low: 0 1px 0 rgba(4, 4, 5, 0.2), 0 1.5px 0 rgba(6, 6, 7, 0.05), 0 2px 0 rgba(4, 4, 5, 0.05);
+  --elevation-medium: 0 4px 4px rgba(0, 0, 0, 0.16);
+  --elevation-high: 0 8px 16px rgba(0, 0, 0, 0.24);
+  --text-normal: #dcddde;
+  --text-muted: #72767d;
+  --text-link: #00b0f4;
+  --brand: #5865f2;
+  --brand-bold: #748ffc;
+  --status-warning: #faa81a;
+  --status-danger: #ed4245;
+  --status-positive: #3ba55d;
+
+  /* LiveKit component theme overrides */
+  --lk-control-bar-bg: var(--background-secondary);
+  --lk-button-bg: var(--background-accent);
+  --lk-button-bg-hover: var(--background-floating);
+  --lk-button-active-bg: var(--brand);
+  --lk-focus-layout-bg: var(--background-primary);
+  --lk-participant-placeholder-bg: var(--background-secondary-alt);
+  --lk-button-text: var(--text-normal);
+  --lk-control-border-radius: 4px;
+  --lk-focus-border: var(--brand);
+}
+
+body {
+  color: var(--text-normal);
+  background: var(--background-tertiary);
+  min-height: 100vh;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  font-size: var(--font-size);
+}
+
+/* Discord-style scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--background-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Custom styling for LiveKit components */
+.lk-video-conference {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.lk-participant-name {
+  background-color: rgba(32, 34, 37, 0.7);
+}
+
+.lk-control-bar {
+  border-radius: 0.5rem !important;
+  margin-bottom: 0.5rem;
+}
+
+.lk-button-group {
+  gap: 0.5rem;
+}
+
+/* Discord-inspired components */
+.discord-sidebar {
+  background-color: var(--background-tertiary);
+  color: var(--text-normal);
+}
+
+.discord-channel-list {
+  background-color: var(--background-secondary);
+}
+
+.discord-main-content {
+  background-color: var(--background-primary);
+}
+
+.discord-members-list {
+  background-color: var(--background-secondary);
+}
+
+.discord-channel {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  margin: 1px 0;
+  border-radius: 4px;
+  color: var(--text-muted);
+  transition: all 0.1s ease;
+}
+
+.discord-channel:hover {
+  background-color: rgba(79, 84, 92, 0.3);
+  color: var(--text-normal);
+}
+
+.discord-channel.active {
+  background-color: rgba(79, 84, 92, 0.6);
+  color: var(--text-normal);
+}
+
+.discord-channel-symbol {
+  margin-right: 6px;
+  font-size: 18px;
+}
+
+.discord-username {
+  font-weight: 500;
+  color: var(--header-secondary);
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-online {
+  background-color: var(--green);
+}
+
+.status-idle {
+  background-color: var(--yellow);
+}
+
+.status-dnd {
+  background-color: var(--red);
+}
+
+.status-offline {
+  background-color: var(--background-accent);
+}
+
+/* Button styling */
+.discord-button {
+  background-color: var(--brand);
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  transition: background-color 0.2s;
+}
+
+.discord-button:hover {
+  background-color: var(--brand-hover);
+}
+
+.discord-button:disabled {
+  background-color: var(--background-accent);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

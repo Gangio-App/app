@@ -1,0 +1,183 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { getCollection, connectToDatabase } from '@/lib/db';
+import { ObjectId } from 'mongodb';
+
+// GET: Check if a user has access to a server
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { serverId: string } }
+) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const userId = searchParams.get('userId');
+
+    if (!userId) {
+      return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
+    }
+
+    // Connect to the database - this returns a DB instance directly
+    const db = await connectToDatabase();
+    
+    // Try to find server by custom ID first
+    let server = await getCollection(db, 'servers').findOne({ id: params.serverId });
+    
+    // If not found, try by MongoDB ObjectId
+    if (!server && ObjectId.isValid(params.serverId)) {
+      server = await getCollection(db, 'servers').findOne({ _id: new ObjectId(params.serverId) });
+    }
+
+    if (!server) {
+      console.log(`[Access Check API] Server not found: ${params.serverId}`);
+      return NextResponse.json({ error: 'Server not found' }, { status: 404 });
+    }
+    
+    // Get the server ID in a consistent format for further queries
+    const serverId = server.id || server._id.toString();
+    console.log(`[Access Check API] Found server: ${server.name} (${serverId})`);
+
+    // Check if user is a member of the server
+    const memberCollection = getCollection(db, 'serverMembers');
+    const member = await memberCollection.findOne({ 
+      serverId: params.serverId, 
+      userId: userId
+    });
+
+    // Also check if the user has this server in their servers array
+    const userCollection = getCollection(db, 'users');
+    const user = await userCollection.findOne({ _id: userId });
+
+    // Check if the server ID is in the user's servers array (handle both string and ObjectId)
+    let isInUserServers = false;
+    if (user && user.servers && Array.isArray(user.servers)) {
+      isInUserServers = user.servers.some((userServerId: any) => {
+        const userServerIdStr = typeof userServerId === 'string' ? userServerId : userServerId.toString();
+        return userServerIdStr === serverId || userServerIdStr === params.serverId;
+      });
+    }
+
+    // Also check if user is in the server's members array
+    let isInServerMembers = false;
+    if (server.members && Array.isArray(server.members)) {
+      isInServerMembers = server.members.some((memberId: any) => {
+        if (typeof memberId === 'string') {
+          return memberId === userId;
+        } else if (memberId && memberId.toString) {
+          return memberId.toString() === userId;
+        }
+        return false;
+      });
+    }
+
+    // Check if user is the owner or a member
+    const isOwner = server.ownerId === userId || 
+                   (server.ownerId && server.ownerId.toString && server.ownerId.toString() === userId);
+
+    // Grant access if user is owner, member, or has server in their servers array
+    if (!member && !isOwner && !isInUserServers && !isInServerMembers) {
+      return NextResponse.json({ error: 'Access denied' }, { status: 403 });
+    }
+
+    // Check user roles and permissions
+    const roleCollection = getCollection(db, 'roles');
+    let permissions: string[] = [];
+    let roles: string[] = [];
+    
+    // If user is server owner, grant all permissions
+    const hasAccess = isOwner || !!member || isInUserServers || isInServerMembers;
+    
+    if (isOwner) {
+      permissions.push('ADMINISTRATOR');
+      // Add all possible permissions
+      permissions.push(
+        'VIEW_CHANNELS',
+        'MANAGE_CHANNELS',
+        'MANAGE_ROLES',
+        'MANAGE_SERVER',
+        'KICK_MEMBERS',
+        'BAN_MEMBERS',
+        'INVITE_MEMBERS',
+        'CHANGE_NICKNAME',
+        'MANAGE_NICKNAMES',
+        'READ_MESSAGES',
+        'SEND_MESSAGES',
+        'MANAGE_MESSAGES',
+        'EMBED_LINKS',
+        'ATTACH_FILES',
+        'READ_MESSAGE_HISTORY',
+        'MENTION_EVERYONE',
+        'USE_EXTERNAL_EMOJIS',
+        'ADD_REACTIONS'
+      );
+    } 
+    // Otherwise, fetch permissions from roles
+    else if (member && member.roles && member.roles.length > 0) {
+      roles = member.roles;
+      
+      // Fetch permissions for each role
+      const userRoles = await roleCollection.find({
+        serverId: params.serverId,
+        id: { $in: member.roles }
+    }).toArray();
+
+    // Extract permissions from roles
+      userRoles.forEach(role => {
+        if (role.permissions && role.permissions.length > 0) {
+          permissions = [...permissions, ...role.permissions];
+        }
+        
+        // Check for ADMINISTRATOR permission
+        if (role.permissions && role.permissions.includes('ADMINISTRATOR')) {
+          permissions.push(
+            'VIEW_CHANNELS',
+            'MANAGE_CHANNELS',
+            'MANAGE_ROLES',
+            'MANAGE_SERVER',
+            'KICK_MEMBERS',
+            'BAN_MEMBERS',
+            'INVITE_MEMBERS',
+            'CHANGE_NICKNAME',
+            'MANAGE_NICKNAMES',
+            'READ_MESSAGES',
+            'SEND_MESSAGES',
+            'MANAGE_MESSAGES',
+            'EMBED_LINKS',
+            'ATTACH_FILES',
+            'READ_MESSAGE_HISTORY',
+            'MENTION_EVERYONE',
+            'USE_EXTERNAL_EMOJIS',
+            'ADD_REACTIONS'
+          );
+        }
+      });
+    }
+    // For users who are members via the servers array but don't have explicit roles
+    else if (hasAccess) {
+      // Grant basic permissions for regular members
+      permissions.push(
+        'VIEW_CHANNELS',
+        'READ_MESSAGES',
+        'SEND_MESSAGES',
+        'EMBED_LINKS',
+        'ATTACH_FILES',
+        'READ_MESSAGE_HISTORY',
+        'ADD_REACTIONS'
+      );
+    }
+
+    // Remove duplicates from permissions array
+    permissions = [...new Set(permissions)];
+
+    return NextResponse.json({
+      hasAccess,
+      isOwner,
+      roles,
+      permissions
+    });
+  } catch (error) {
+    console.error('Error checking server access:', error);
+    return NextResponse.json(
+      { error: 'Failed to check server access' },
+      { status: 500 }
+    );
+  }
+}

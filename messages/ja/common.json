@@ -1,0 +1,536 @@
+{
+    "app": {
+      "name": "gvng.io",
+      "tagline": "友達やコミュニティとつながろう。",
+      "version": "バージョン 0.1.0-alpha",
+      "alphaTest": "アルファテスト",
+      "slogan": "ゲーマーが集う場所"
+    },
+    "navigation": {
+      "home": "ホーム",
+      "friends": "フレンド",
+      "servers": "サーバー",
+      "messages": "メッセージ",
+      "settings": "設定",
+      "logout": "ログアウト",
+      "features": "機能",
+      "discover": "発見",
+      "about": "私たちについて",
+      "careers": "採用情報",
+      "download": "ダウンロード",
+      "login": "ログイン",
+      "openApp": "アプリを開く"
+    },
+    "megaMenu": {
+      "communication": "コミュニケーション",
+      "voiceChannels": "ボイスチャンネル",
+      "voiceChannelsDesc": "ゲーム用のクリスタルクリアな音声チャット",
+      "textChannels": "テキストチャンネル",
+      "textChannelsDesc": "絶文字やメディアを含む豊かなメッセージング",
+      "directMessages": "ダイレクトメッセージ",
+      "directMessagesDesc": "友達とのプライベートな会話",
+      "gaming": "ゲーミング",
+      "gameIntegration": "ゲーム統合",
+      "gameIntegrationDesc": "Steam、Epicなどと接続",
+      "gameOverlays": "ゲームオーバーレイ",
+      "gameOverlaysDesc": "alt-tabせずに誰が話しているか確認可能",
+      "squadFinder": "スクワッドファインダー",
+      "squadFinderDesc": "完璧なゲームチームを見つける",
+      "company": "会社",
+      "aboutUs": "私たちについて",
+      "aboutUsDesc": "私たちのミッションとストーリー",
+      "careers": "採用情報",
+      "careersDesc": "成長するチームに参加しよう",
+      "blog": "ブログ",
+      "blogDesc": "ニュースとアップデート",
+      "resources": "リソース",
+      "changelog": "変更履歴",
+      "changelogDesc": "最新のアップデートと機能",
+      "status": "ステータス",
+      "statusDesc": "システムステータスとメトリクス",
+      "faq": "FAQ",
+      "faqDesc": "よくある質問",
+      "discoverPro": "GANGIO Proを発見",
+      "proDesc": "本格的なゲーマー向けの拡張機能",
+      "learnMore": "詳細を見る"
+    },
+    "settings": {
+      "title": "設定",
+      "categories": {
+        "userSettings": "ユーザー設定",
+        "appSettings": "アプリ設定",
+        "info": "情報"
+      },
+      "tabs": {
+        "myAccount": "マイアカウント",
+        "profile": "プロフィール",
+        "connections": "接続",
+        "privacySafety": "プライバシーとセキュリティ",
+        "appearance": "外観",
+        "notifications": "通知",
+        "voiceVideo": "音声とビデオ",
+        "keybinds": "キーバインド",
+        "language": "言語",
+        "experimental": "実験的機能",
+        "feedback": "フィードバック",
+        "changelog": "変更履歴",
+        "sessions": "アクティブセッション"
+      },
+      "notImplemented": "この設定パネルはまだ実装されていません。"
+    },
+    "changelog": {
+      "title": "変更履歴",
+      "viewFull": "全履歴を表示",
+      "viewAllUpdates": "すべての更新を表示",
+      "filters": {
+        "all": "すべての更新"
+      },
+      "tags": {
+        "features": "機能",
+        "performance": "パフォーマンス",
+        "bugfixes": "バグ修正",
+        "security": "セキュリティ"
+      },
+      "types": {
+        "feature": "新機能",
+        "improvement": "改善",
+        "fix": "修正",
+        "security": "セキュリティ"
+      }
+    },
+    "appearance": {
+      "title": "外観設定",
+      "theme": {
+        "title": "テーマ",
+        "dark": "ダーク",
+        "light": "ライト",
+        "system": "システムに合わせる"
+      },
+      "colorScheme": {
+        "title": "カラースキーム",
+        "blue": "ブルー",
+        "green": "グリーン",
+        "purple": "パープル",
+        "pink": "ピンク",
+        "red": "レッド",
+        "orange": "オレンジ",
+        "custom": "カスタム"
+      },
+      "customColors": {
+        "title": "カスタムカラー",
+        "enable": "カスタムカラーを有効にする",
+        "accent": "アクセントカラー",
+        "background": "背景色",
+        "foreground": "前景色"
+      },
+      "fontSize": {
+        "title": "フォントサイズ",
+        "small": "小",
+        "medium": "中",
+        "large": "大"
+      },
+      "fontFamily": {
+        "title": "フォントファミリー"
+      },
+      "fontWeight": {
+        "title": "フォントウェイト"
+      },
+      "preview": "プレビュー"
+    },
+    "language": {
+      "title": "言語設定",
+      "displayLanguage": {
+        "title": "表示言語",
+        "autoDetect": "ブラウザ設定から自動検出",
+        "helpText": "この設定はUIの言語を変更します。変更はアプリの再読み込み後に反映されます。"
+      },
+      "regionalFormat": {
+        "title": "地域フォーマット",
+        "dateFormat": "日付フォーマット",
+        "timeFormat": "時刻フォーマット",
+        "helpText": "これらの設定はアプリ全体の日付と時刻の表示方法を決定します。"
+      },
+      "textTranslation": {
+        "title": "テキストと翻訳",
+        "spellCheck": "スペルチェックを有効にする",
+        "autoTranslate": "メッセージを自動翻訳",
+        "threshold": "翻訳信頼度のしきい値",
+        "thresholdLow": "低い",
+        "thresholdHigh": "高い",
+        "thresholdHelp": "しきい値を高くするとシステムが高い信頼度を持つ翻訳のみ表示されます。",
+        "downloadPack": "言語パックをダウンロード",
+        "contribute": "翻訳に貢献"
+      },
+      "preview": {
+        "title": "プレビュー",
+        "currentLanguage": "現在の言語",
+        "dateFormat": "日付フォーマット例",
+        "timeFormat": "時刻フォーマット例",
+        "spellCheck": "スペルチェック",
+        "autoTranslation": "自動翻訳",
+        "enabled": "有効",
+        "disabled": "無効",
+        "withThreshold": "有効 ({threshold}% しきい値)"
+      }
+    },
+    "squadFinder": {
+    "title": "スクワッドファインダー",
+    "createSquad": "スクワッドを作成",
+    "joinSquad": "スクワッドに参加",
+    "leaveSquad": "スクワッドを離れる",
+    "waitingForOthers": "他のプレイヤーを待っています...",
+    "squadRoom": "スクワッドルーム",
+    "skillLevel": "スキルレベル",
+    "region": "地域",
+    "settings": {
+      "title": "スクワッドファインダー設定",
+      "displayName": "表示名",
+      "displayNameDesc": "この名前はスクワッドファインダーで他のプレイヤーに表示されます",
+      "steamProfile": "Steam プロフィール URL",
+      "steamProfileDesc": "認証のためのSteamプロフィールへのリンク",
+      "cs2Rating": "CS2 レーティング (ELO)",
+      "gamingRegion": "主要ゲーミング地域",
+      "gamingRegionDesc": "主にプレイする地域を選択してください"
+    }
+  },
+  "voiceVideo": {
+      "title": "音声・ビデオ設定",
+      "inputDevices": {
+        "title": "入力デバイス",
+        "microphone": "マイク",
+        "inputVolume": "入力音量",
+        "noiseSupression": "ノイズ抑制",
+        "echoCancellation": "エコーキャンセル",
+        "autoGain": "自動ゲイン制御",
+        "testMic": "マイクをテスト",
+        "permissionRequired": "音声設定にマイクのアクセスが必要です。許可してください。",
+        "requestAccess": "アクセスをリクエスト"
+      },
+      "outputDevices": {
+        "title": "出力デバイス",
+        "speaker": "スピーカー",
+        "outputVolume": "出力音量",
+        "testSpeaker": "スピーカーをテスト"
+      },
+      "videoSettings": {
+        "title": "ビデオ設定",
+        "camera": "カメラ",
+        "quality": "ビデオ品質",
+        "qualityLow": "低 (320×240)",
+        "qualityMedium": "中 (640×480)",
+        "qualityHigh": "高 (960×540)",
+        "qualityHD": "HD (1280×720)",
+        "mirror": "ミラー表示",
+        "backgroundBlur": "背景ぼかし",
+        "blurAmount": "ぼかし量",
+        "startPreview": "プレビュー開始",
+        "stopPreview": "プレビュー停止",
+        "previewPlaceholder": "ここにビデオプレビューが表示されます",
+        "permissionRequired": "ビデオ設定にカメラのアクセスが必要です。許可してください。",
+        "requestAccess": "アクセスをリクエスト"
+      },
+      "voiceActivity": {
+        "title": "音声アクティビティ",
+        "pushToTalk": "プッシュ・トゥ・トーク",
+        "voiceDetection": "音声検出",
+        "releaseDelay": "リリース遅延",
+        "sensitivity": "感度",
+        "sensitivityHelp": "感度を高くするとマイクがより簡単に反応します。"
+      }
+    },
+    "friends": {
+      "title": "フレンド",
+      "online": "オンライン",
+      "all": "すべて",
+      "pending": "保留中",
+      "blocked": "ブロック済み",
+      "addFriend": "フレンド追加",
+      "incomingRequests": "受信フレンドリクエスト",
+      "outgoingRequests": "送信フレンドリクエスト",
+      "noFriends": "フレンドが見つかりません。追加して始めましょう！",
+      "noRequests": "保留中のリクエストはありません",
+      "accept": "承認",
+      "ignore": "無視",
+      "cancel": "キャンセル",
+      "message": "メッセージ",
+      "unblock": "ブロック解除"
+    },
+    "messages": {
+      "title": "メッセージ",
+      "noMessages": "メッセージはありません",
+      "startConversation": "{name}との会話を開始",
+      "typing": "{name}が入力中…",
+      "sendMessage": "メッセージを送信",
+      "newMessages": "新しいメッセージ"
+    },
+    "dashboard": {
+      "welcome": "ようこそ",
+      "welcomeBack": "おかえりなさい、{name}！",
+      "quickActions": "クイックアクション",
+      "startChat": "チャット開始",
+      "createServer": "サーバー作成",
+      "joinServer": "サーバー参加",
+      "findFriends": "フレンドを探す",
+      "recentActivity": "最近のアクティビティ",
+      "onlineFriends": "オンラインフレンド",
+      "pendingRequests": "保留中のリクエスト",
+      "viewAll": "すべて表示",
+      "noOnlineFriends": "オンラインのフレンドはいません",
+      "noPendingRequests": "保留中のリクエストはありません",
+      "serverActivity": "サーバーアクティビティ",
+      "noServerActivity": "最近のサーバーアクティビティはありません",
+      "directMessages": "ダイレクトメッセージ",
+      "noDirectMessages": "最近のダイレクトメッセージはありません"
+    },
+    "landing": {
+      "hero": {
+        "badge": "次世代ゲームプラットフォーム",
+        "title": "ゲーム体験をレベルアップ",
+        "subtitle": "次世代プラットフォームでゲーミング仲間とつながり、コミュニケーションし、一緒に勝利を目指そう。",
+        "downloadNow": "今すぐダウンロード",
+        "learnMore": "詳細を見る"
+      },
+      "features": {
+        "title": "ゲーマー向け機能",
+        "subtitle": "コミュニティ構築と競争優位を実現するすべての機能。",
+        "realTimeChat": {
+          "title": "リアルタイムチャット",
+          "description": "最先端のリアルタイム通信インフラで、超高速メッセージングを体験してください。"
+        },
+        "voiceChat": {
+          "title": "クリスタルクリアなボイスチャット",
+          "description": "低遅延・高品質な音声通信で激しいセッション中もつながる。"
+        },
+        "screenSharing": {
+          "title": "画面共有",
+          "description": "エピックな瞬間や戦略、チュートリアルをリアルタイムで高品質共有。"
+        },
+        "customServers": {
+          "title": "カスタムサーバー",
+          "description": "コミュニティ専用サーバーを作成し、チャンネルを整理、体験をパーソナライズ。"
+        },
+        "lowLatency": {
+          "title": "低遅延",
+          "description": "最適化されたネットワークでゲーム中の通信を途切れなく提供。"
+        },
+        "richPresence": {
+          "title": "リッチプレゼンス",
+          "description": "フレンドが何を遊んでいるか、どれくらいプレイしているか、参加可能かがわかる。"
+        },
+        "crossPlatform": {
+          "title": "クロスプラットフォーム",
+          "description": "Windows、macOS、Linux、iOS、Android間でシームレスにつながる。"
+        },
+        "serverCommunities": {
+          "description": "サーバーを作成または参加し、チャンネルを整理し、共通の興味を中心にコミュニティを構築します。",
+          "title": "サーバーコミュニティ"
+        },
+        "voiceChannels": {
+          "title": "クリアな音声",
+          "description": "シームレスなチームコミュニケーションとカジュアルなハングアウトのための高品質、低遅延のボイスチャンネル。"
+        },
+        "gifSupport": {
+          "title": "GIFで表現しよう！",
+          "description": "GIFを使用してメッセージをより面白く、表現力を高めましょう。"
+        },
+        "gamerFocused": {
+          "title": "ゲーマー中心",
+          "description": "ゲーマーによるゲーマーのための設計。私たちのプラットフォームは、ゲームコミュニティ特有のニーズに応えるために作られています。"
+        },
+        "security": {
+          "title": "セキュリティとプライバシー",
+          "description": "私たちはあなたのセキュリティとプライバシーを非常に重視しています。私たちのプラットフォームは、あなたのデータを保護するために堅牢なセキュリティ対策で構築されています。"
+        }
+      },
+      "multilanguage": {
+        "badge": "グローバルリーチ",
+        "title": "多言語対応",
+        "subtitle": "世界中のゲーマーと言語の壁なくつながろう。",
+        "helpTranslate": "翻訳を手伝う"
+      },
+      "community": {
+        "title": "成長中のコミュニティに参加",
+        "subtitle": "世界中のゲーマーとつながり、ヒントを共有し、新しい友達を作ろう。",
+        "members": "アクティブメンバー",
+        "servers": "サーバー",
+        "messages": "1日あたりのメッセージ",
+        "joinCommunity": "コミュニティに参加"
+      },
+      "callToAction": {
+        "title": "ゲーム体験を向上させる準備はできましたか？",
+        "subtitle": "何千ものゲーマーがつながり、コミュニケーションし、一緒に勝利を目指しています。",
+        "createAccount": "アカウント作成",
+        "downloadNow": "今すぐダウンロード",
+        "downloadClient": "クライアントをダウンロード",
+        "signIn": "ログイン",
+        "version": "バージョン"
+      }
+    },
+    "translations": {
+      "title": "翻訳に協力",
+      "subtitle": "gvng.ioを世界中のゲーマーに届けるためにコミュニティと一緒に取り組もう。",
+      "progress": "翻訳進捗",
+      "howToContribute": "貢献方法",
+      "fileStructure": "翻訳ファイル構造",
+      "startContributing": "貢献を開始",
+      "steps": {
+        "fork": "リポジトリをフォーク",
+        "locate": "翻訳ファイルを見つける",
+        "translate": "テキストを翻訳",
+        "submit": "プルリクエストを送信"
+      },
+      "notes": {
+        "placeholders": "プレースホルダーはそのままにする",
+        "structure": "JSON構造とキーを保持",
+        "keysOnly": "キーではなく値のみ翻訳",
+        "test": "アプリ言語を切り替えて翻訳をテスト"
+      }
+    },
+    "download": {
+      "officialDownloads": "公式ダウンロード",
+      "title": {
+        "first": "どこでもGANGIOを使おう",
+        "second": ""
+      },
+      "subtitle": "あらゆるプラットフォームでアプリをダウンロードし、コミュニティとどこでもつながろう。",
+      "downloadNow": "今すぐダウンロード",
+      "download": "ダウンロード",
+      "launchWebApp": "ウェブアプリを起動",
+      "platformTypes": {
+        "desktop": "デスクトップ",
+        "mobile": "モバイル",
+        "web": "Web"
+      },
+      "recommended": "推奨",
+      "version": "バージョン",
+      "size": "サイズ",
+      "systemRequirements": "システム要件",
+      "featuresTitle": {
+        "first": "ゲーマーのための",
+        "second": "強力な機能"
+      },
+      "integrationsTitle": "お好みのゲームプラットフォームと連携",
+      "faqTitle": "よくある質問",
+      "platforms": {
+        "windows": {
+          "description": "Windows 10/11 (64ビット)",
+          "requirements": "Windows 10以上、4GB RAM、500MB空き"
+        },
+        "macos": {
+          "description": "macOS 11.0以上 (Apple Silicon & Intel)",
+          "requirements": "macOS 11.0以上、4GB RAM、500MB空き"
+        },
+        "linux": {
+          "description": "Ubuntu, Debian, Fedoraなど",
+          "requirements": "Ubuntu 20.04以上、Debian 10以上または互換ディストリビューション"
+        },
+        "android": {
+          "description": "Android 8.0以上", 
+          "requirements": "Android 8.0以上、2GB RAM"
+        },
+        "ios": {
+          "description": "iPhone/iPad (iOS 14以上)",
+          "requirements": "iOS 14以上、iPhone, iPad, iPod touch対応"
+        },
+        "web": {
+          "name": "Webアプリ",
+          "description": "インストール不要",
+          "version": "最新",
+          "size": "なし",
+          "requirements": "最新のブラウザ (Chrome, Firefox, Safari, Edge)"
+        }
+      },
+      "features": {
+        "voiceChat": {
+          "title": "クリスタルクリアなボイスチャット",
+          "description": "低遅延・ノイズ抑制対応音声"
+        },
+        "gameIntegration": {
+          "title": "ゲーム連携",
+          "description": "Steam、Epic Gamesなどと連携"
+        },
+        "community": {
+          "title": "コミュニティ構築",
+          "description": "強力なツールでコミュニティを作成・管理"
+        },
+        "security": {
+          "title": "セキュリティとプライバシー",
+          "description": "エンドツーエンド暗号化と堅牢な制御"
+        },
+        "performance": {
+          "title": "パフォーマンス向上",
+          "description": "ゲーム向けに最適化、リソース最小使用"
+        },
+        "crossPlatform": {
+          "title": "クロスプラットフォーム同期",
+          "description": "すべてのデバイスでシームレス体験"
+        }
+      },
+      "faq": {
+        "free": {
+          "question": "GANGIOは無料ですか？",
+          "answer": "はい、GANGIOは完全に無料です。追加機能付きプレミアムプランもありますが、基本機能はずっと無料です。"
+        },
+        "multipleDevices": {
+          "question": "複数デバイスで使えますか？",
+          "answer": "もちろん！アカウントはすべてのプラットフォームで同期し、デスクトップ、モバイル、Web間を自由に切り替えられます。"
+        },
+        "security": {
+          "question": "GANGIOのセキュリティは？",
+          "answer": "業界標準の暗号化とセキュリティ手法でデータを保護。プライバシーを最優先します。"
+        },
+        "updates": {
+          "question": "どうやって更新しますか？",
+          "answer": "起動時に自動で更新をチェックします。設定から手動でも確認可能です。"
+        }
+      }
+    },
+    "login": {
+      "welcomeBack": "おかえりなさい",
+      "subtitle": "gvng.ioにログインしてコミュニティに参加",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "rememberMe": "ログイン状態を保持",
+      "forgotPassword": "パスワードを忘れた場合",
+      "signIn": "ログイン",
+      "loggingIn": "ログイン中…",
+      "orSignInWith": "または次でログイン",
+      "signInWithSteam": "Steamでログイン",
+      "signInWithGoogle": "Googleでログイン"
+    },
+    "footer": {
+      "description": "GANGIOはゲーマー向けの究極のコミュニケーションプラットフォームです。友達とつながり、コミュニティを構築し、ゲーム体験を向上させましょう。",
+      "product": "製品",
+      "download": "ダウンロード",
+      "features": "機能",
+      "premium": "GANGIO Pro",
+      "status": "ステータス",
+      "changelog": "変更履歴",
+      "company": "会社",
+      "aboutUs": "私たちについて",
+      "careers": "採用情報",
+      "blog": "ブログ",
+      "branding": "ブランディング",
+      "contact": "お問い合わせ",
+      "resources": "リソース",
+      "support": "サポート",
+      "faq": "FAQ",
+      "communityGuidelines": "コミュニティガイドライン",
+      "termsOfService": "利用規約",
+      "privacyPolicy": "プライバシーポリシー",
+      "cookiePolicy": "クッキーポリシー",
+      "newsletter": {
+        "title": "最新情報を入手",
+        "description": "最新のアップデート、機能、ニュースを受け取るにはニュースレターに登録してください。",
+        "placeholder": "メールアドレスを入力",
+        "subscribe": "登録する"
+      },
+      "copyright": "すべての権利は保護されています。",
+      "bottomLinks": {
+        "terms": "利用規約",
+        "privacy": "プライバシー",
+        "cookies": "クッキー",
+        "legal": "法的情報"
+      }
+    }
+  }

@@ -1,0 +1,75 @@
+# Gangio - Discord-inspired Chat Platform
+
+## Overview
+Gangio is a full-featured chat and communication platform inspired by Discord. It provides real-time messaging, server-based communities, direct messaging, voice/video communication, and social features in a modern, responsive interface.
+
+## Core Features
+
+### Authentication & User Management
+- User registration and login system
+- Profile customization with avatars, banners, statuses, and bios
+- Friend system with requests and management
+- Status indicators (online, idle, DND, invisible, focus)
+- Steam integration for gaming profiles
+
+### Server Management
+- Create and join servers with custom icons and banners
+- Server roles with granular permissions
+- Categories and channels organization
+- Invite code system for joining servers
+- Server member management
+
+### Messaging System
+- Real-time text messaging
+- Rich message content (embedded links, code blocks)
+- Message reactions
+- File attachments and media sharing
+- Message history and search
+- Direct messaging between users
+
+### Voice & Video
+- Voice channels
+- Video call support
+- Screen sharing capabilities
+
+### UI/UX Requirements
+- Responsive design working on all device sizes
+- Clean, modern interface inspired by Discord
+- Dark mode by default
+- Fast, optimized performance
+
+## Technical Requirements
+
+### Database
+- MongoDB for data storage with the schema as defined in gangio.md
+- Optimized indexes for performance
+- Proper relationships between collections
+
+### Backend
+- Next.js API routes for server-side operations
+- Real-time communication using WebSockets
+- Secure authentication system
+- Efficient media storage and delivery
+
+### Frontend
+- React with Next.js framework
+- Tailwind CSS for styling
+- Component-based architecture
+- Responsive design principles
+
+### Performance Requirements
+- Fast loading times
+- Efficient real-time updates
+- Optimized media handling
+- Mobile-responsive design
+
+## Deployment
+- Vercel deployment
+- Environment-specific configurations
+- Continuous integration
+
+## Timeline
+Phase 1: Core authentication and server structure
+Phase 2: Messaging and media sharing
+Phase 3: Voice/video features
+Phase 4: Advanced features and optimizations 

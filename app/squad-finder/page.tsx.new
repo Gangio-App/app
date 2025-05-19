@@ -1,0 +1,349 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import PageLayout from '@/components/PageLayout';
+import { motion } from 'framer-motion';
+import { FiUsers, FiSearch, FiSliders, FiShield, FiXCircle, FiUserPlus } from 'react-icons/fi';
+import { BiGame } from 'react-icons/bi';
+import SquadRoom from '@/components/squad/SquadRoom';
+
+// CS2 Ranks based on memory (simplified for dropdown)
+const cs2Ranks = [
+  { value: 'any', label: 'Any Rank' },
+  { value: '0-7499', label: 'Silver (Below 7500 ELO)' },
+  { value: '7500-11799', label: 'Gold Nova (7500 - 11799 ELO)' },
+  { value: '11800-14999', label: 'Master Guardian (11800 - 14999 ELO)' },
+  { value: '15000-18399', label: 'Legendary Eagle / DMG (15000 - 18399 ELO)' },
+  { value: '18400-19999', label: 'Supreme Master First Class (18400 - 19999 ELO)' },
+  { value: '20000-30000', label: 'Global Elite (20000+ ELO)' },
+];
+
+const regions = [
+  { value: 'any', label: 'Any Region' },
+  { value: 'na_east', label: 'North America (East)' },
+  { value: 'na_west', label: 'North America (West)' },
+  { value: 'eu_west', label: 'Europe (West)' },
+  { value: 'eu_east', label: 'Europe (East)' },
+  { value: 'asia', label: 'Asia' },
+  { value: 'sa', label: 'South America' },
+  { value: 'oce', label: 'Oceania' },
+];
+
+interface Squad {
+  _id: string;
+  createdBy: string;
+  cs2Rank: string;
+  region: string;
+  members: {
+    userId: string;
+    displayName: string;
+    joinedAt: string;
+    isHost: boolean;
+  }[];
+  active: boolean;
+  maxMembers: number;
+  createdAt: string;
+}
+
+export default function SquadFinderPage() {
+  const router = useRouter();
+  const { data: session, status: sessionStatus } = useSession();
+  const [filters, setFilters] = useState({
+    cs2Rank: 'any',
+    region: 'any',
+  });
+  const [squads, setSquads] = useState<Squad[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [activeSquadId, setActiveSquadId] = useState<string | null>(null);
+  const [isCreatingSquad, setIsCreatingSquad] = useState(false);
+
+  // Check if user is authenticated
+  useEffect(() => {
+    if (sessionStatus === 'unauthenticated') {
+      router.push('/login');
+    }
+  }, [sessionStatus, router]);
+
+  const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setFilters(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSearch = async () => {
+    if (sessionStatus !== 'authenticated') return;
+    
+    setIsLoading(true);
+    try {
+      const response = await fetch(`/api/squad/search?cs2Rank=${filters.cs2Rank}&region=${filters.region}`);
+      if (!response.ok) throw new Error('Failed to search squads');
+      
+      const data = await response.json();
+      setSquads(data.squads || []);
+    } catch (error) {
+      console.error('Error searching squads:', error);
+      setSquads([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleCreateSquad = async () => {
+    if (sessionStatus !== 'authenticated') return;
+    
+    setIsCreatingSquad(true);
+    try {
+      const response = await fetch('/api/squad/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          cs2Rank: filters.cs2Rank,
+          region: filters.region,
+        }),
+      });
+      
+      if (!response.ok) throw new Error('Failed to create squad');
+      
+      const data = await response.json();
+      setActiveSquadId(data.squadId);
+    } catch (error) {
+      console.error('Error creating squad:', error);
+    } finally {
+      setIsCreatingSquad(false);
+    }
+  };
+
+  const handleJoinSquad = (squadId: string) => {
+    setActiveSquadId(squadId);
+  };
+
+  const handleLeaveSquad = () => {
+    setActiveSquadId(null);
+  };
+
+  // If not authenticated yet, show loading
+  if (sessionStatus === 'loading') {
+    return (
+      <PageLayout>
+        <div className="container mx-auto px-4 py-12 md:py-20 text-white flex justify-center items-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
+        </div>
+      </PageLayout>
+    );
+  }
+
+  // If not authenticated, redirect happens via useEffect
+
+  return (
+    <PageLayout>
+      <div className="container mx-auto px-4 py-12 md:py-20 text-white">
+        {activeSquadId ? (
+          // Show the squad room when a squad is active
+          <div className="max-w-4xl mx-auto">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-semibold flex items-center">
+                <FiUsers className="mr-3 text-emerald-400"/> Squad Room
+              </h2>
+              <button
+                onClick={handleLeaveSquad}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition-colors"
+              >
+                Leave Squad
+              </button>
+            </div>
+            <SquadRoom squadId={activeSquadId} onClose={handleLeaveSquad} />
+          </div>
+        ) : (
+          // Show the squad finder UI when no squad is active
+          <>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-10 md:mb-12"
+            >
+              <FiUsers className="mx-auto text-emerald-400 text-6xl mb-4" />
+              <h1 className="text-4xl md:text-5xl font-bold mb-3">
+                Find Your <span className="text-emerald-400">CS2 Squad</span>
+              </h1>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+                Discover teammates for Counter-Strike 2. Filter by ELO, region, and join the fight!
+              </p>
+            </motion.div>
+
+            {/* Filters Section */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-gray-800/80 backdrop-blur-md p-6 md:p-8 rounded-xl shadow-2xl border border-gray-700/60 mb-10 md:mb-12"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
+                <div>
+                  <label htmlFor="game" className="block text-sm font-medium text-gray-300 mb-1.5">Game</label>
+                  <div className="flex items-center bg-gray-700/80 rounded-lg p-3 h-[48px]">
+                    <BiGame className="text-emerald-400 mr-2 text-xl" />
+                    <span className="text-white font-medium">Counter-Strike 2</span>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="cs2Rank" className="block text-sm font-medium text-gray-300 mb-1.5">Skill Level (CS2 ELO)</label>
+                  <select 
+                    id="cs2Rank" 
+                    name="cs2Rank"
+                    value={filters.cs2Rank}
+                    onChange={handleFilterChange}
+                    className="w-full bg-gray-700/80 border-gray-600/70 text-white rounded-lg p-3 h-[48px] focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                  >
+                    {cs2Ranks.map(rank => (
+                      <option key={rank.value} value={rank.value}>{rank.label}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="region" className="block text-sm font-medium text-gray-300 mb-1.5">Region</label>
+                  <select 
+                    id="region" 
+                    name="region"
+                    value={filters.region}
+                    onChange={handleFilterChange}
+                    className="w-full bg-gray-700/80 border-gray-600/70 text-white rounded-lg p-3 h-[48px] focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                  >
+                    {regions.map(region => (
+                      <option key={region.value} value={region.value}>{region.label}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex space-x-2">
+                  <button 
+                    type="button"
+                    onClick={handleSearch}
+                    disabled={isLoading}
+                    className="flex-1 bg-emerald-600 hover:bg-emerald-700 disabled:bg-emerald-800 text-white font-semibold py-3 px-3 rounded-lg flex items-center justify-center transition-colors duration-150 h-[48px] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+                  >
+                    {isLoading ? (
+                      <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                    ) : <FiSearch className="mr-2" />}
+                    {isLoading ? 'Searching...' : 'Find Squads'}
+                  </button>
+                  
+                  <button
+                    type="button"
+                    onClick={handleCreateSquad}
+                    disabled={isCreatingSquad}
+                    className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 text-white font-semibold py-3 px-3 rounded-lg flex items-center justify-center transition-colors duration-150 h-[48px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+                  >
+                    {isCreatingSquad ? (
+                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                    ) : <FiUserPlus className="mr-0" />}
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Search Results Section */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <h2 className="text-2xl font-semibold mb-6 flex items-center"><FiSliders className="mr-3 text-emerald-400"/> Available Squads</h2>
+              {isLoading ? (
+                <div className="text-center py-10 text-gray-400">Searching for squads...</div>
+              ) : squads.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {squads.map(squad => (
+                    <motion.div 
+                      key={squad._id} 
+                      className="bg-gray-800/70 p-5 rounded-lg shadow-lg border border-gray-700/50 hover:border-emerald-500/70 transition-all duration-200"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="flex justify-between items-start mb-3">
+                        <h3 className="text-xl font-semibold text-emerald-400">Squad #{squad._id.substring(0, 6)}</h3>
+                        <span className="text-xs bg-gray-700 px-2 py-1 rounded-full text-gray-300">
+                          {squad.members.length}/{squad.maxMembers} players
+                        </span>
+                      </div>
+                      
+                      <p className="text-sm text-gray-300 mb-1">
+                        Region: <span className="font-medium text-white">
+                          {regions.find(r => r.value === squad.region)?.label || squad.region}
+                        </span>
+                      </p>
+                      
+                      <p className="text-sm text-gray-300 mb-3">
+                        Rank: <span className="font-medium text-white">
+                          {cs2Ranks.find(r => r.value === squad.cs2Rank)?.label || squad.cs2Rank}
+                        </span>
+                      </p>
+                      
+                      <div className="mb-4">
+                        <h4 className="text-sm font-medium text-gray-400 mb-1">Members:</h4>
+                        <div className="space-y-1">
+                          {squad.members.map(member => (
+                            <div key={member.userId} className="flex items-center text-sm">
+                              <span className="w-4 h-4 bg-emerald-500 rounded-full mr-2"></span>
+                              <span>{member.displayName} {member.isHost && '(Host)'}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <button 
+                        onClick={() => handleJoinSquad(squad._id)}
+                        disabled={squad.members.length >= squad.maxMembers}
+                        className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-gray-700 text-white py-2 px-3 rounded-md text-sm font-medium transition-colors"
+                      >
+                        {squad.members.length >= squad.maxMembers ? 'Squad Full' : 'Join Squad'}
+                      </button>
+                    </motion.div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12 bg-gray-800/60 rounded-lg border border-dashed border-gray-700/50">
+                  <FiXCircle className="mx-auto text-gray-500 text-5xl mb-4" />
+                  <p className="text-gray-400">No squads found matching your criteria.</p>
+                  <p className="text-sm text-gray-500 mb-6">Try adjusting your filters or create your own squad.</p>
+                  
+                  <button
+                    onClick={handleCreateSquad}
+                    disabled={isCreatingSquad}
+                    className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 disabled:bg-emerald-800 text-white rounded-md text-sm font-medium transition-colors inline-flex items-center"
+                  >
+                    {isCreatingSquad ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Creating...
+                      </>
+                    ) : (
+                      <>
+                        <FiUserPlus className="mr-2" />
+                        Create a New Squad
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+            </motion.div>
+          </>
+        )}
+      </div>
+    </PageLayout>
+  );
+}

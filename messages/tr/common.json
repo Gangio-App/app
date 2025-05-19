@@ -1,0 +1,919 @@
+{
+  "app": {
+    "name": "gvng.io",
+    "tagline": "Arkadaşlarınız ve topluluklarla bağlantı kurun.",
+    "version": "Versiyon 0.1.0 -alpha",
+    "alphaTest": "Alpha Test",
+    "slogan": "Oyuncuların Buluşma Noktası"
+  },
+  "download": {
+    "title": "Gangio'yu İndir",
+    "closeButton": "Kapat",
+    "platformWindows": "Windows",
+    "platformMacOS": "macOS",
+    "platformLinux": "Linux",
+    "platformAndroid": "Android",
+    "platformIOS": "iOS",
+    "labelVersion": "Sürüm",
+    "labelSize": "Boyut",
+    "labelInstructions": "Kurulum Adımları",
+    "downloadButton": "İndir",
+    "windows": {
+      "description": "Windows 10/11 (64-bit)",
+      "instructions": {
+        "1": "GANGIO yükleyicisini indirin (.exe)",
+        "2": "Yükleyiciyi çalıştırın ve ekrandaki talimatları izleyin",
+        "3": "Yüklendikten sonra, GANGIO uygulamasını masaüstünüzden veya başlat menüsünden başlatın",
+        "4": "Hesabınızla giriş yapın veya yeni bir hesap oluşturun",
+        "5": "Oyun topluluklarınızla bağlantı kurmaya başlayın!"
+      }
+    },
+    "macos": {
+      "description": "macOS 11.0+ (Apple Silicon & Intel)",
+      "instructions": {
+        "1": "GANGIO disk imajını indirin (.dmg)",
+        "2": "Disk imajını açın ve GANGIO uygulamasını Uygulamalar klasörüne sürükleyin",
+        "3": "GANGIO uygulamasını Uygulamalar klasöründen başlatın",
+        "4": "Güvenlik uyarısı alırsanız, Sistem Tercihleri > Güvenlik ve Gizlilik bölümüne gidin ve GANGIO uygulamasına izin verin",
+        "5": "Hesabınızla giriş yapın veya yeni bir hesap oluşturun"
+      }
+    },
+    "linux": {
+      "description": "Ubuntu, Debian, Fedora ve daha fazlası",
+      "instructions": {
+        "1": "Dağıtımınız için uygun paketi indirin (.deb, .rpm veya AppImage)",
+        "2": ".deb için: 'sudo dpkg -i gangio.deb' komutunu çalıştırın",
+        "3": ".rpm için: 'sudo rpm -i gangio.rpm' komutunu çalıştırın",
+        "4": "AppImage için: 'chmod +x gangio.AppImage' komutu ile çalıştırılabilir yapın ve çalıştırın",
+        "5": "GANGIO uygulamasını başlatın ve hesabınızla giriş yapın"
+      }
+    },
+    "android": {
+      "description": "Android 8.0+",
+      "instructions": {
+        "1": "GANGIO uygulamasını Google Play Store'dan indirin",
+        "2": "Yüklemeden sonra uygulamayı açın",
+        "3": "Hesabınızla giriş yapın veya yeni bir hesap oluşturun",
+        "4": "En iyi deneyim için bildirimlere izin verin",
+        "5": "Hareket halindeyken oyun topluluklarınızla sohbet etmeye başlayın!"
+      }
+    },
+    "ios": {
+      "description": "iPhone & iPad (iOS 14+)",
+      "instructions": {
+        "1": "GANGIO uygulamasını App Store'dan indirin",
+        "2": "Yüklemeden sonra uygulamayı açın",
+        "3": "Hesabınızla giriş yapın veya yeni bir hesap oluşturun",
+        "4": "Sorulduğunda bildirimlere izin verin",
+        "5": "iOS cihazınızda GANGIO'nun keyfini çıkarın!"
+      }
+    }
+  },
+  "navigation": {
+    "home": "Ana Sayfa",
+    "friends": "Arkadaşlar",
+    "servers": "Sunucular",
+    "messages": "Mesajlar",
+    "settings": "Ayarlar",
+    "logout": "Çıkış Yap",
+    "features": "Özellikler",
+    "discover": "Keşfet",
+    "about": "Hakkında",
+    "careers": "Kariyer",
+    "download": "İndir",
+    "login": "Giriş Yap",
+    "openApp": "Uygulamayı Aç"
+  },
+  "navigationBar": {
+    "title": "Navigasyon Çubuğu",
+    "search": "Ara",
+    "searchPlaceholder": "Arkadaşlar, sunucular veya mesajlar ara",
+    "notifications": "Bildirimler",
+    "profile": "Profil",
+    "settings": "Ayarlar"
+  },
+  "megaMenu": {
+    "title": "Mega Menü",
+    "communication": "İletişim",
+    "voiceChannels": "Sesli Kanallar",
+    "voiceChannelsDesc": "Oyun için kristal netliğinde sesli sohbet",
+    "textChannels": "Metin Kanalları",
+    "textChannelsDesc": "Emoji ve medya ile zengin mesajlaşma",
+    "directMessages": "Direkt Mesajlar",
+    "directMessagesDesc": "Arkadaşlarla özel konuşmalar",
+    "gaming": "Oyun",
+    "gameIntegration": "Oyun Entegrasyonu",
+    "gameIntegrationDesc": "Steam, Epic ve daha fazlasıyla bağlantı kurun",
+    "gameOverlays": "Oyun İçi Arayüz",
+    "gameOverlaysDesc": "Alt-tab yapmadan kimin konuştuğunu görün",
+    "squadFinder": "Takım Bulucu",
+    "squadFinderDesc": "Mükemmel oyun takımını bulun",
+    "company": "Şirket",
+    "aboutUs": "Hakkımızda",
+    "aboutUsDesc": "Misyonumuz ve hikayemiz",
+    "careers": "Kariyer",
+    "careersDesc": "Büyüyen ekibimize katılın",
+    "blog": "Blog",
+    "blogDesc": "Haberler ve güncellemeler",
+    "resources": "Kaynaklar",
+    "changelog": "Değişiklik Günlüğü",
+    "changelogDesc": "En son güncellemeler ve özellikler",
+    "status": "Durum",
+    "statusDesc": "Sistem durumu ve metrikler",
+    "faq": "SSS",
+    "faqDesc": "Sıkça sorulan sorular",
+    "discoverPro": "GANGIO Pro'yu Keşfedin",
+    "proDesc": "Ciddi oyuncular için gelişmiş özellikler",
+    "learnMore": "Daha fazla bilgi"
+  },
+  "meetTheGang": {
+    "title": "GANG ile Tanışın",
+    "subtitle": "Elivechit'in arkasındaki renkli karakterler, platformumuza kişilik ve eğlence katıyor.",
+    "storyTitle": "GANG'in Hikayesi",
+    "storyPart1": "Oyun ve topluluk tutkusundan doğan maskotlarımız, Elivechit ekibini oluşturan çeşitli yetenekleri ve kişilikleri temsil ediyor.",
+    "storyPart2": "Fufu liderliğindeki bu dinamik grup, oyuncular ve topluluklar için en iyi platformu oluşturmak için birlikte çalışıyor. Her üye masaya kendi benzersiz becerilerini ve bakış açısını getiriyor.",
+    "storyPart3": "İster arkadaşlarınızla sohbet edin, ister bir sunucuya katılın, ister yeni toplulukları keşfedin, GANG deneyiminizi daha iyi hale getirmek için yanınızda.",
+    "mascots": {
+      "fufu": {
+        "name": "Fufu",
+        "role": "Lider",
+        "description": "GANG'in vizyoner lideri Fufu, stratejik düşünce ve sınırsız coşkusuyla herkesi bir araya getiriyor."
+      },
+      "kazek": {
+        "name": "Kazek",
+        "role": "Teknoloji Ustası",
+        "description": "Teknolojimizin arkasındaki parlak zeka, Kazek karmaşık sorunları yenilikçi çözümlerle çözüyor."
+      },
+      "fela": {
+        "name": "Fela",
+        "role": "Yaratıcı Direktör",
+        "description": "Tasarım ve estetik konusundaki gözüyle Fela, her şeyin mükemmel görünmesini ve hissedilmesini sağlıyor."
+      },
+      "bobby": {
+        "name": "Bobby",
+        "role": "Topluluk Yöneticisi",
+        "description": "Topluluğumuzun dost yüzü Bobby, herkesin kendini hoş karşılanmış ve duyulmuş hissetmesini sağlıyor."
+      }
+    }
+  },
+  "footer": {
+    "description": "GANGIO, oyuncular için nihai iletişim platformudur. Arkadaşlarınızla bağlantı kurun, topluluklar oluşturun ve oyun deneyiminizi yükseltin.",
+    "product": "Ürün",
+    "download": "İndir",
+    "features": "Özellikler",
+    "premium": "GANGIO Pro",
+    "status": "Durum",
+    "changelog": "Değişiklik Günlüğü",
+    "company": "Şirket",
+    "aboutUs": "Hakkımızda",
+    "meetTheGang": "GANG ile Tanışın",
+    "careers": "Kariyer",
+    "blog": "Blog",
+    "branding": "Marka",
+    "contact": "İletişim",
+    "resources": "Kaynaklar",
+    "support": "Destek",
+    "faq": "SSS",
+    "communityGuidelines": "Topluluk Kuralları",
+    "termsOfService": "Hizmet Koşulları",
+    "privacyPolicy": "Gizlilik Politikası",
+    "cookiePolicy": "Çerez Politikası",
+    "newsletter": {
+      "title": "Haberdar kalın",
+      "description": "En son güncellemeler, özellikler ve haberler için bültenimize abone olun.",
+      "placeholder": "E-posta adresinizi girin",
+      "subscribe": "Abone ol"
+    },
+    "copyright": "Tüm hakları saklıdır.",
+    "bottomLinks": {
+      "terms": "Koşullar",
+      "privacy": "Gizlilik",
+      "cookies": "Çerezler",
+      "legal": "Yasal"
+    }
+  },
+  "wiki": {
+    "title": "Gangio Wiki",
+    "search": "Wiki makalelerinde ara...",
+    "articles": "Makaleler",
+    "welcome": "Gangio Wiki'ye Hoş Geldiniz",
+    "welcomeDesc": "Gangio'yu kullanmak ve topluluklarınızla bağlantı kurmak için kapsamlı rehberiniz.",
+    "servers": {
+      "title": "Sunucu Rehberi",
+      "shortDesc": "Topluluklar için sunucu oluşturmayı, katılmayı ve yönetmeyi öğrenin."
+    },
+    "channels": {
+      "title": "Kanal Rehberi",
+      "shortDesc": "Farklı kanal türlerini iletişim için nasıl kullanacağınızı keşfedin."
+    },
+    "voice": {
+      "title": "Ses & Görüntü",
+      "shortDesc": "LiveKit teknolojisiyle desteklenen ses ve görüntülü görüşmeleri kullanın."
+    },
+    "roles": {
+      "title": "Roller & İzinler",
+      "shortDesc": "Topluluğunuzu yönetmek için rol ve izinleri ayarlayın."
+    },
+    "guidelines": {
+      "title": "Topluluk Kuralları",
+      "desc": "Herkes için olumlu bir deneyim sağlamak için lütfen topluluk kurallarımıza uyun.",
+      "commitment": "Gangio, tüm kullanıcılar için güvenli ve kapsayıcı alanlar oluşturmaya kararlıdır."
+    },
+    "moderation": {
+      "title": "Moderasyon Komutları",
+      "shortDesc": "Moderasyon komutları ve nasıl kullanılacakları hakkında bilgi edinin.",
+      "commands": {
+        "kick": "Bir üyeyi sunucudan at",
+        "kickUsage": "/kick @kullanıcı [sebep]",
+        "ban": "Bir üyeyi sunucudan yasakla",
+        "banUsage": "/ban @kullanıcı [süre] [sebep]",
+        "mute": "Bir üyeyi belirli bir süre için sustur",
+        "muteUsage": "/mute @kullanıcı [süre] [sebep]",
+        "timeFormat": "Süre formatı örnekleri: 1m, 1h, 1d, 1w",
+        "reasonOptional": "Sebep isteğe bağlıdır",
+        "durationRequired": "Susturma ve geçici yasaklama için süre gereklidir"
+      }
+    }
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "categories": {
+      "userSettings": "KULLANICI AYARLARI",
+      "appSettings": "UYGULAMA AYARLARI",
+      "info": "BİLGİ"
+    },
+    "tabs": {
+      "myAccount": "Hesabım",
+      "profile": "Profil",
+      "connections": "Bağlantılar",
+      "privacySafety": "Gizlilik ve Güvenlik",
+      "appearance": "Görünüm",
+      "notifications": "Bildirimler",
+      "squadFinder": "Takım Bulucu",
+      "voiceVideo": "Ses ve Video",
+      "keybinds": "Kısayol Tuşları",
+      "language": "Dil",
+      "experimental": "Deneysel Özellikler",
+      "feedback": "Geri Bildirim",
+      "changelog": "Değişiklik Günlüğü",
+      "sessions": "Aktif Oturumlar"
+    },
+    "notImplemented": "Bu ayarlar paneli henüz uygulanmadı."
+  },
+  "changelog": {
+    "title": "Değişiklik Günlüğü",
+    "viewFull": "Tam Değişiklik Günlüğünü Görüntüle",
+    "viewAllUpdates": "Tüm Güncellemeleri Görüntüle",
+    "filters": {
+      "all": "Tüm Güncellemeler"
+    },
+    "tags": {
+      "features": "Özellikler",
+      "performance": "Performans",
+      "bugfixes": "Hata Düzeltmeleri",
+      "security": "Güvenlik"
+    },
+    "types": {
+      "feature": "Yeni Özellik",
+      "improvement": "İyileştirme",
+      "fix": "Hata Düzeltmesi",
+      "security": "Güvenlik"
+    }
+  },
+  "appearance": {
+    "title": "Görünüm Ayarları",
+    "theme": {
+      "title": "Tema",
+      "dark": "Karanlık",
+      "light": "Aydınlık",
+      "system": "Sistem ile Senkronize Et"
+    },
+    "colorScheme": {
+      "title": "Renk Şeması",
+      "blue": "Mavi",
+      "green": "Yeşil",
+      "purple": "Mor",
+      "pink": "Pembe",
+      "red": "Kırmızı",
+      "orange": "Turuncu",
+      "custom": "Özel"
+    },
+    "customColors": {
+      "title": "Özel Renkler",
+      "enable": "Özel renkleri kullan",
+      "accent": "Vurgu Rengi",
+      "background": "Arka Plan Rengi",
+      "foreground": "Ön Plan Rengi"
+    },
+    "fontSize": {
+      "title": "Yazı Tipi Boyutu",
+      "small": "Küçük",
+      "medium": "Orta",
+      "large": "Büyük"
+    },
+    "fontFamily": {
+      "title": "Yazı Tipi Ailesi"
+    },
+    "fontWeight": {
+      "title": "Yazı Tipi Kalınlığı"
+    },
+    "preview": "Önizleme"
+  },
+  "language": {
+    "title": "Dil Ayarları",
+    "displayLanguage": {
+      "title": "Görüntüleme Dili",
+      "autoDetect": "Tarayıcı ayarlarından dili otomatik olarak algıla",
+      "helpText": "Bu ayar, kullanıcı arayüzünün dilini değiştirir. Değişiklikler uygulamayı yeniden yükledikten sonra geçerli olacaktır."
+    },
+    "regionalFormat": {
+      "title": "Bölgesel Format",
+      "dateFormat": "Tarih Formatı",
+      "timeFormat": "Saat Formatı",
+      "helpText": "Bu ayarlar, uygulama genelinde tarih ve saatlerin nasıl görüntüleneceğini belirler."
+    },
+    "textTranslation": {
+      "title": "Metin ve Çeviri",
+      "spellCheck": "Yazım denetimini etkinleştir",
+      "autoTranslate": "Mesajları otomatik olarak çevir",
+      "threshold": "Çeviri Güven Eşiği",
+      "thresholdLow": "Düşük",
+      "thresholdHigh": "Yüksek",
+      "thresholdHelp": "Daha yüksek eşik, çevirilerin yalnızca sistem doğruluklarından daha emin olduğunda gösterileceği anlamına gelir.",
+      "downloadPack": "Dil Paketini İndir",
+      "contribute": "Çevirilere Katkıda Bulun"
+    },
+    "preview": {
+      "title": "Önizleme",
+      "currentLanguage": "Mevcut Dil",
+      "dateFormat": "Tarih Formatı Örneği",
+      "timeFormat": "Saat Formatı Örneği",
+      "spellCheck": "Yazım Denetimi",
+      "autoTranslation": "Otomatik Çeviri",
+      "enabled": "Etkin",
+      "disabled": "Devre Dışı",
+      "withThreshold": "Etkin ({threshold}% eşik)"
+    }
+  },
+  "squadFinder": {
+    "title": "Takım Bulucu",
+    "createSquad": "Takım Oluştur",
+    "joinSquad": "Takıma Katıl",
+    "leaveSquad": "Takımdan Ayrıl",
+    "waitingForOthers": "Diğer oyuncular bekleniyor...",
+    "squadRoom": "Takım Odası",
+    "skillLevel": "Beceri Seviyesi",
+    "region": "Bölge",
+    "settings": {
+      "title": "Takım Bulucu Ayarları",
+      "displayName": "Görünen İsim",
+      "displayNameDesc": "Bu isim Takım Bulucu'da diğer oyunculara gösterilecek",
+      "steamProfile": "Steam Profil URL'si",
+      "steamProfileDesc": "Doğrulama için Steam profilinize bağlantı",
+      "cs2Rating": "CS2 Derecesi (ELO)",
+      "gamingRegion": "Ana Oyun Bölgesi",
+      "gamingRegionDesc": "Çoğunlukla oynadığınız bölgeyi seçin"
+    }
+  },
+  "voiceVideo": {
+    "title": "Ses ve Video Ayarları",
+    "inputDevices": {
+      "title": "Giriş Cihazları",
+      "microphone": "Mikrofon",
+      "inputVolume": "Giriş Ses Seviyesi",
+      "noiseSupression": "Gürültü Bastırma",
+      "echoCancellation": "Yankı İptali",
+      "autoGain": "Otomatik Kazanç Kontrolü",
+      "testMic": "Mikrofonu Test Et",
+      "permissionRequired": "Ses ayarları için mikrofon erişimi gereklidir. Lütfen izin verin.",
+      "requestAccess": "Erişim İste"
+    },
+    "outputDevices": {
+      "title": "Çıkış Cihazları",
+      "speaker": "Hoparlör",
+      "outputVolume": "Çıkış Ses Seviyesi",
+      "testSpeaker": "Hoparlörü Test Et"
+    },
+    "videoSettings": {
+      "title": "Video Ayarları",
+      "camera": "Kamera",
+      "quality": "Video Kalitesi",
+      "qualityLow": "Düşük (320x240)",
+      "qualityMedium": "Orta (640x480)",
+      "qualityHigh": "Yüksek (960x540)",
+      "qualityHD": "HD (1280x720)",
+      "mirror": "Video Aynalama",
+      "backgroundBlur": "Arka Plan Bulanıklığı",
+      "blurAmount": "Bulanıklık Miktarı",
+      "startPreview": "Video Önizlemeyi Başlat",
+      "stopPreview": "Video Önizlemeyi Durdur",
+      "previewPlaceholder": "Video önizlemesi burada görünecek",
+      "permissionRequired": "Video ayarları için kamera erişimi gereklidir. Lütfen izin verin.",
+      "requestAccess": "Erişim İste"
+    },
+    "voiceActivity": {
+      "title": "Ses Aktivitesi",
+      "pushToTalk": "Bas-Konuş",
+      "voiceDetection": "Ses Aktivitesi Algılama",
+      "releaseDelay": "Bırakma Gecikmesi",
+      "sensitivity": "Hassasiyet",
+      "sensitivityHelp": "Daha yüksek hassasiyet, mikrofonunuzun daha kolay etkinleşeceği anlamına gelir."
+    }
+  },
+  "friends": {
+    "title": "Arkadaşlar",
+    "online": "Çevrimiçi",
+    "all": "Tümü",
+    "pending": "Bekleyen",
+    "blocked": "Engellenen",
+    "addFriend": "Arkadaş Ekle",
+    "incomingRequests": "Gelen Arkadaşlık İstekleri",
+    "outgoingRequests": "Giden Arkadaşlık İstekleri",
+    "noFriends": "Arkadaş bulunamadı. Başlamak için bazı arkadaşlar ekleyin!",
+    "noRequests": "Bekleyen istek yok",
+    "accept": "Kabul Et",
+    "ignore": "Yoksay",
+    "cancel": "İptal",
+    "message": "Mesaj",
+    "unblock": "Engeli Kaldır"
+  },
+  "messages": {
+    "title": "Mesajlar",
+    "noMessages": "Henüz mesaj yok",
+    "startConversation": "{name} ile bir konuşma başlat",
+    "typing": "{name} yazıyor...",
+    "sendMessage": "Bir mesaj gönder",
+    "newMessages": "Yeni Mesajlar"
+  },
+  "dashboard": {
+    "welcome": "Hoş Geldiniz",
+    "welcomeBack": "Tekrar Hoş Geldiniz, {name}!",
+    "quickActions": "Hızlı İşlemler",
+    "startChat": "Sohbet Başlat",
+    "createServer": "Sunucu Oluştur",
+    "joinServer": "Sunucuya Katıl",
+    "findFriends": "Arkadaş Bul",
+    "recentActivity": "Son Aktivite",
+    "onlineFriends": "Çevrimiçi Arkadaşlar",
+    "pendingRequests": "Bekleyen İstekler",
+    "viewAll": "Tümünü Görüntüle",
+    "noOnlineFriends": "Şu anda çevrimiçi arkadaş yok",
+    "noPendingRequests": "Bekleyen istek yok",
+    "serverActivity": "Sunucu Aktivitesi",
+    "noServerActivity": "Son sunucu aktivitesi yok",
+    "directMessages": "Doğrudan Mesajlar",
+    "noDirectMessages": "Son doğrudan mesaj yok"
+  },
+  "landing": {
+    "hero": {
+      "badge": "Yeni Nesil Oyun Platformu",
+      "title": "Oyun Deneyiminizi Yükseltin",
+      "subtitle": "Oyun arkadaşlarınızla bağlantı kurmak, iletişim kurmak ve birlikte kazanmak için tasarlanmış yeni nesil oyuncu platformu.",
+      "downloadNow": "HEMEN İNDİR",
+      "learnMore": "Daha Fazla Bilgi"
+    },
+    "features": {
+      "title": "Oyuncular İçin Tasarlanmış Özellikler",
+      "subtitle": "Oyun topluluğunuzu oluşturmak ve rekabetin önünde kalmak için ihtiyacınız olan her şey.",
+      "realTimeChat": {
+        "title": "Gerçek Zamanlı Sohbet",
+        "description": "En son teknoloji gerçek zamanlı iletişim altyapımızla ışık hızında mesajlaşmayı deneyimleyin."
+      },
+      "serverCommunities": {
+        "title": "Sunucu Toplulukları",
+        "description": "Sunucu oluşturun veya katılın, kanalları düzenleyin ve ortak ilgi alanlarınız etrafında topluluğunuzu oluşturun."
+      },
+      "voiceChannels": {
+        "title": "Kristal Netliğinde Ses",
+        "description": "Kesintisiz ekip iletişimi ve rahat sohbetler için yüksek kaliteli, düşük gecikmeli ses kanalları."
+      },
+      "gifSupport": {
+        "title": "GIF'lerle İfade Edin!",
+        "description": "Sohbetlerinizi canlandırın! Konuşmaları daha ilgi çekici ve eğlenceli hale getirmek için GIF'leri kolayca arayın, önizleyin ve gönderin."
+      },
+      "gamerFocused": {
+        "title": "Oyuncu Odaklı",
+        "description": "Oyuncular tarafından, oyuncular için geliştirildi. Platformumuz, oyun topluluğunun benzersiz ihtiyaçlarını karşılamak üzere tasarlanmıştır."
+      },
+      "security": {
+        "title": "Güvenlik ve Gizlilik",
+        "description": "Güvenliğinizi ve gizliliğinizi ciddiye alıyoruz. Platformumuz, verilerinizi korumak için sağlam güvenlik önlemleriyle oluşturulmuştur."
+      },
+      "voiceChat": {
+        "title": "Kristal Netliğinde Sesli Sohbet",
+        "description": "Yoğun oyun oturumları sırasında ekibinizle bağlantıda kalmanızı sağlayan düşük gecikmeli, yüksek kaliteli ses iletişimi."
+      },
+      "screenSharing": {
+        "title": "Ekran Paylaşımı",
+        "description": "Destansı oyun anlarınızı, stratejilerinizi veya eğitimlerinizi yüksek kaliteli ekran paylaşımıyla arkadaşlarınızla gerçek zamanlı olarak paylaşın."
+      },
+      "community": {
+        "title": "Oyun Toplulukları",
+        "description": "Favori oyunlarınıza adanmış oyun topluluklarını oluşturun ve bu topluluklara katılın, takım arkadaşları bulun ve kalıcı dostluklar kurun."
+      },
+      "richText": {
+        "title": "Zengin Metin Sohbeti",
+        "description": "Modern sohbet arayüzümüzde zengin metin biçimlendirme, emoji tepkileri, GIF'ler ve dosya paylaşımı ile kendinizi ifade edin."
+      },
+      "gameIntegration": {
+        "title": "Oyun Entegrasyonu",
+        "description": "Steam hesabınızı bağlayın ve ne oynadığınızı gösterin. Otomatik oyun algılama ve zengin durum özellikleri."
+      }
+    },
+    "multilanguage": {
+      "badge": "Küresel Erişim",
+      "title": "Artık Çok Dilli",
+      "subtitle": "Dünyanın dört bir yanından oyuncularla kendi dillerinde bağlantı kurun.",
+      "helpTranslate": "Çeviriye Yardım Et"
+    },
+    "community": {
+      "title": "Büyüyen Topluluğumuza Katılın",
+      "subtitle": "Dünyanın dört bir yanından oyuncularla bağlantı kurun, oyun ipuçlarını paylaşın ve yeni arkadaşlar edinin.",
+      "members": "Aktif Üye",
+      "servers": "Sunucu",
+      "messages": "Günlük Mesaj",
+      "createAccount": "Hesap Oluştur",
+      "downloadNow": "HEMEN İNDİR",
+      "downloadClient": "İstemciyi İndir",
+      "signIn": "Giriş Yap",
+      "version": "Versiyon",
+      "joinCommunity": "Topluluğa Katıl"
+    },
+    "moreFeatures": {
+      "customServers": {
+        "title": "Özel Sunucular",
+        "description": "Topluluğunuz için özel sunucular oluşturun, kanalları düzenleyin ve oyun deneyiminizi tamamen kişiselleştirin."
+      },
+      "lowLatency": {
+        "title": "Düşük Gecikme",
+        "description": "Gecikmeyi en aza indiren ve oyun sırasında kesintisiz iletişim sağlayan optimize edilmiş ağ altyapısı."
+      },
+      "richPresence": {
+        "title": "Zengin Durum Bilgisi",
+        "description": "Arkadaşlarınızın hangi oyunları oynadığını, ne kadar süredir oynadığını ve katılmaya hazır olup olmadıklarını görün."
+      },
+      "crossPlatform": {
+        "title": "Çoklu Platform Desteği",
+        "description": "Windows, macOS, Linux, iOS ve Android arasında sorunsuz entegrasyon ile her cihazda bağlantıda kalın."
+      }
+    },
+    "callToAction": {
+      "title": "Oyun Deneyiminizi Yükseltmeye Hazır mısınız?",
+      "subtitle": "Platformumuzu kullanarak bağlantı kuran, iletişim kuran ve birlikte kazanan binlerce oyuncuya katılın.",
+      "createAccount": "Hesap Oluştur",
+      "downloadNow": "HEMEN İNDİR",
+      "downloadClient": "İstemciyi İndir",
+      "signIn": "Giriş Yap",
+      "version": "Sürüm"
+    }
+  },
+  "translations": {
+    "title": "Çeviriye Yardım Et",
+    "subtitle": "gvng.io'yu dünyanın dört bir yanındaki oyunculara erişilebilir kılmak için topluluk çabamıza katılın.",
+    "progress": "Çeviri İlerlemesi",
+    "howToContribute": "Nasıl Katkıda Bulunulur",
+    "fileStructure": "Çeviri Dosyası Yapısı",
+    "startContributing": "Katkıda Bulunmaya Başla",
+    "steps": {
+      "fork": "Depomuzu fork edin",
+      "locate": "Çeviri dosyalarını bulun",
+      "translate": "Metinleri çevirin",
+      "submit": "Bir pull request gönderin"
+    },
+    "notes": {
+      "placeholders": "Yer tutucuları olduğu gibi bırakın",
+      "structure": "Aynı JSON yapısını ve anahtarlarını koruyun",
+      "keysOnly": "Sadece değerleri çevirin, anahtarları değil",
+      "test": "Çevirilerinizi uygulamada dil değiştirerek test edin"
+    }
+  },
+  "downloadPage": {
+    "officialDownloads": "Resmi İndirmeler",
+    "title": {
+      "first": "GANGIO'yu",
+      "second": "Her Yerde Kullanın"
+    },
+    "subtitle": "Uygulamamızı herhangi bir platform için indirin ve oyun topluluklarınızla her yerde bağlantıda kalın.",
+    "downloadNow": "Şimdi İndir",
+    "downloadButton": "İndir",
+    "launchWebApp": "Web Uygulamasını Başlat",
+    "platformTypes": {
+      "desktop": "Masaüstü",
+      "mobile": "Mobil",
+      "web": "Web"
+    },
+    "recommended": "Önerilen",
+    "version": "Sürüm",
+    "size": "Boyut",
+    "systemRequirements": "Sistem Gereksinimleri",
+    "featuresTitle": {
+      "first": "Oyuncular için",
+      "second": "Güçlü Özellikler"
+    },
+    "integrationsTitle": "Favori Oyun Platformlarınızla Entegre",
+    "faqTitle": "Sıkça Sorulan Sorular",
+    "platforms": {
+      "windows": {
+        "description": "Windows 10/11 (64-bit)",
+        "requirements": "Windows 10 veya üzeri, 4GB RAM, 500MB disk alanı"
+      },
+      "macos": {
+        "description": "macOS 11.0+ (Apple Silicon ve Intel)",
+        "requirements": "macOS 11.0 veya üzeri, 4GB RAM, 500MB disk alanı"
+      },
+      "linux": {
+        "description": "Ubuntu, Debian, Fedora ve diğerleri",
+        "requirements": "Ubuntu 20.04+, Debian 10+ veya diğer uyumlu dağıtımlar"
+      },
+      "android": {
+        "description": "Android 8.0+",
+        "requirements": "Android 8.0 veya üzeri, 2GB RAM"
+      },
+      "ios": {
+        "description": "iPhone ve iPad (iOS 14+)",
+        "requirements": "iOS 14.0 veya üzeri, iPhone, iPad ve iPod touch ile uyumlu"
+      },
+      "web": {
+        "name": "Web Uygulaması",
+        "description": "İndirme gerekmez",
+        "version": "En Son",
+        "size": "Yok",
+        "requirements": "Modern tarayıcı (Chrome, Firefox, Safari, Edge)"
+      }
+    },
+    "download": {
+      "installationGuide": "Kurulum Rehberi",
+      "downloadFor": "{{platform}} için indir",
+      "windows": {
+        "description": "Windows 10/11 (64-bit)",
+        "instructions": {
+          "1": "GANGIO yükleyicisini indirin (.exe)",
+          "2": "Yükleyiciyi çalıştırın ve ekrandaki talimatları izleyin",
+          "3": "Yüklendikten sonra, GANGIO uygulamasını masaüstünüzden veya başlat menüsünden başlatın",
+          "4": "Hesabınızla giriş yapın veya yeni bir hesap oluşturun",
+          "5": "Oyun topluluklarınızla bağlantı kurmaya başlayın!"
+        }
+      },
+      "macos": {
+        "description": "macOS 11.0+ (Apple Silicon ve Intel)",
+        "instructions": {
+          "1": "GANGIO disk imajını indirin (.dmg)",
+          "2": "Disk imajını açın ve GANGIO uygulamasını Uygulamalar klasörüne sürükleyin",
+          "3": "GANGIO uygulamasını Uygulamalar klasöründen başlatın",
+          "4": "Güvenlik hakkında uyarı alırsanız, Sistem Tercihleri > Güvenlik ve Gizlilik bölümüne gidin ve GANGIO uygulamasına izin verin",
+          "5": "Hesabınızla giriş yapın veya yeni bir hesap oluşturun"
+        }
+      },
+      "linux": {
+        "description": "Ubuntu, Debian, Fedora ve daha fazlası",
+        "instructions": {
+          "1": "Dağıtımınız için uygun paketi indirin (.deb, .rpm veya AppImage)",
+          "2": ".deb için: sudo dpkg -i gangio.deb komutunu çalıştırın",
+          "3": ".rpm için: sudo rpm -i gangio.rpm komutunu çalıştırın",
+          "4": "AppImage için: chmod +x gangio.AppImage komutu ile çalıştırılabilir yapın ve çalıştırın",
+          "5": "GANGIO uygulamasını başlatın ve hesabınızla giriş yapın"
+        }
+      },
+      "android": {
+        "description": "Android 8.0+",
+        "instructions": {
+          "1": "GANGIO uygulamasını Google Play Store'dan indirin",
+          "2": "Yüklemeden sonra uygulamayı açın",
+          "3": "Hesabınızla giriş yapın veya yeni bir hesap oluşturun",
+          "4": "En iyi deneyim için bildirimlere izin verin",
+          "5": "Hareket halindeyken oyun topluluklarınızla sohbet etmeye başlayın!"
+        }
+      },
+      "ios": {
+        "description": "iPhone ve iPad (iOS 14+)",
+        "instructions": {
+          "1": "GANGIO uygulamasını App Store'dan indirin",
+          "2": "Yüklemeden sonra uygulamayı açın",
+          "3": "Hesabınızla giriş yapın veya yeni bir hesap oluşturun",
+          "4": "Sorulduğunda bildirimlere izin verin",
+          "5": "iOS cihazınızda GANGIO'nun keyfini çıkarın!"
+        }
+      }
+    },
+    "features": {
+      "voiceChat": {
+        "title": "Kristal Netliğinde Sesli Sohbet",
+        "description": "Gürültü bastırma özellikli düşük gecikmeli ses iletişimi"
+      },
+      "gameIntegration": {
+        "title": "Oyun Entegrasyonu",
+        "description": "Steam, Epic Games ve diğer platformlarla bağlantı kurun"
+      },
+      "community": {
+        "title": "Topluluk Oluşturma",
+        "description": "Güçlü araçlarla oyun topluluklarınızı oluşturun ve yönetin"
+      },
+      "security": {
+        "title": "Güvenlik ve Gizlilik",
+        "description": "Uçtan uca şifreleme ve sağlam gizlilik kontrolleri"
+      },
+      "performance": {
+        "title": "Performans Artışı",
+        "description": "Minimum kaynak kullanımı ile oyun için optimize edilmiş"
+      },
+      "crossPlatform": {
+        "title": "Çapraz Platform Senkronizasyonu",
+        "description": "Tüm cihazlarınızda kesintisiz deneyim"
+      }
+    },
+    "faq": {
+      "free": {
+        "question": "GANGIO kullanımı ücretsiz mi?",
+        "answer": "Evet, GANGIO'yu indirmek ve kullanmak tamamen ücretsizdir. Ek özellikler içeren premium abonelikler sunuyoruz, ancak temel işlevsellik sonsuza kadar ücretsizdir."
+      },
+      "multipleDevices": {
+        "question": "GANGIO'yu birden fazla cihazda kullanabilir miyim?",
+        "answer": "Kesinlikle! Hesabınız tüm platformlarda senkronize olur, böylece masaüstü, mobil ve web sürümleri arasında sorunsuz geçiş yapabilirsiniz."
+      },
+      "security": {
+        "question": "GANGIO ne kadar güvenli?",
+        "answer": "Verilerinizi güvende tutmak için endüstri standardı şifreleme ve güvenlik uygulamaları kullanıyoruz. Gizliliğiniz önceliğimizdir."
+      },
+      "updates": {
+        "question": "GANGIO'yu nasıl güncellerim?",
+        "answer": "Uygulama, başlangıçta otomatik olarak güncellemeleri kontrol eder. Ayrıca ayarlar menüsünden manuel olarak güncellemeleri kontrol edebilirsiniz."
+      }
+    }
+  },
+  "login": {
+    "welcomeBack": "Tekrar Hoş Geldiniz",
+    "subtitle": "gvng.io'ya giriş yapın ve topluluğunuzla bağlantı kurun",
+    "email": "E-posta",
+    "password": "Şifre",
+    "rememberMe": "Beni hatırla",
+    "forgotPassword": "Şifrenizi mi unuttunuz?",
+    "signIn": "Giriş yap",
+    "loggingIn": "Giriş yapılıyor...",
+    "orSignInWith": "VEYA ŞUNUNLA GİRİŞ YAPIN",
+    "signInWithSteam": "Steam ile giriş yap",
+    "signInWithGoogle": "Google ile giriş yap",
+    "signInWithGithub": "GitHub ile giriş yap",
+    "signInWithFacebook": "Facebook ile giriş yap",
+    "noAccount": "Hesabınız yok mu?",
+    "signUp": "Kaydol",
+    "loginSuccessful": "Giriş başarılı!",
+    "redirecting": "Kontrol paneline yönlendiriliyorsunuz...",
+    "welcomeMessage": "Sizi tekrar görmekten çok heyecanlıyız! Topluluklarınıza erişmek ve kaldığınız yerden devam etmek için giriş yapın.",
+    "photoCredit": "Fotoğraf:",
+    "on": "üzerinde",
+    "language": "Dil"
+  },
+  "signup": {
+    "createAccount": "Hesap Oluştur",
+    "subtitle": "gvng.io'ya katılın ve topluluğunuzla bağlantı kurun",
+    "username": "Kullanıcı adı",
+    "email": "E-posta",
+    "password": "Şifre",
+    "confirmPassword": "Şifreyi Onayla",
+    "termsAgreement": "Kaydolarak şunları kabul etmiş olursunuz:",
+    "termsLink": "Şartlar ve Koşullar",
+    "createAccountButton": "Hesap Oluştur",
+    "creatingAccount": "Hesap Oluşturuluyor...",
+    "alreadyHaveAccount": "Zaten bir hesabınız var mı?",
+    "login": "Giriş yap",
+    "accountCreated": "Hesap başarıyla oluşturuldu!",
+    "redirectingToLogin": "Giriş sayfasına yönlendiriliyorsunuz...",
+    "connectWithCommunity": "Oyun topluluğunuzla bağlantı kurun",
+    "joinThousands": "gvng.io'da binlerce oyuncuya katılın - oyun toplulukları için yeni nesil platform.",
+    "features": {
+      "createJoinServers": {
+        "title": "Sunucular oluşturun ve katılın",
+        "description": "Kendi oyun topluluğunuzu oluşturun veya mevcut olanlara katılın"
+      },
+      "communication": {
+        "title": "Metin, ses ve video sohbeti",
+        "description": "Arkadaşlarınızla gerçek zamanlı olarak iletişim kurun"
+      },
+      "sharing": {
+        "title": "Oyun anlarını paylaşın",
+        "description": "Ekran görüntüleri, klipler yükleyin ve oyun akışı yapın"
+      }
+    },
+    "language": "Dil"
+  },
+  "common": {
+    "loading": "Yükleniyor",
+    "edit": "Düzenle",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "confirm": "Onayla",
+    "apply": "Uygula"
+  },
+  "account": {
+    "myAccount": "Hesabım",
+    "accountInformation": "HESAP BİLGİLERİ",
+    "username": "KULLANICI ADI",
+    "email": "E-POSTA",
+    "password": "ŞİFRE",
+    "twoFactorAuthentication": "İKİ FAKTÖRLÜ KİMLİK DOĞRULAMA",
+    "notEnabled": "Etkin değil",
+    "enable": "Etkinleştir",
+    "change": "Değiştir",
+    "reveal": "Göster",
+    "noEmailSet": "E-posta ayarlanmadı",
+    "editProfile": "Profili Düzenle",
+    "clickToChangeStatus": "Durumunuzu değiştirmek için tıklayın",
+    "accountManagement": "HESAP YÖNETİMİ",
+    "accountManagementDescription": "Hesabınızı istediğiniz zaman devre dışı bırakabilir veya silebilirsiniz. Bu, oturumunuzu kapatacak ve sohbet geçmişiniz ve arkadaşlarınız dahil olmak üzere hesabınızı tamamen silecektir.",
+    "disableAccount": "Hesabı Devre Dışı Bırak",
+    "disableAccountDescription": "Destek ile iletişime geçmediğiniz sürece hesabınıza erişemezsiniz - ancak verileriniz silinmeyecektir.",
+    "deleteAccount": "Hesabı Sil",
+    "deleteAccountDescription": "Hesabınız ve tüm verileriniz (mesajlarınız ve arkadaş listeniz dahil) silme kuyruğuna alınacaktır. Bir onay e-postası gönderilecektir - destek ile iletişime geçerek 7 gün içinde bunu iptal edebilirsiniz.",
+    "status": {
+      "online": "çevrimiçi",
+      "idle": "boşta",
+      "dnd": "rahatsız etmeyin",
+      "focus": "odaklanmış",
+      "invisible": "görünmez",
+      "offline": "çevrimdışı"
+    },
+    "userNotFound": "Kullanıcı bulunamadı. Lütfen tekrar giriş yapın."
+  },
+  "status": {
+    "online": "çevrimiçi",
+    "idle": "boşta",
+    "doNotDisturb": "rahatsız etmeyin",
+    "focus": "odaklanmış",
+    "invisible": "görünmez",
+    "offline": "çevrimdışı"
+  },
+  "members": {
+    "pleaseLogin": "Üyeleri görmek için lütfen giriş yapın.",
+    "noPermission": "Bu sunucunun üyelerini görüntüleme izniniz yok.",
+    "online": "Çevrimiçi",
+    "offline": "Çevrimdışı",
+    "all": "Tüm Üyeler",
+    "pending": "Bekleyen Üyeler",
+    "banned": "Yasaklı Üyeler"
+  },
+  "features": {
+    "designedForGamers": "Oyuncular İçin Tasarlandı",
+    "title": "Özellikler",
+    "subtitle": "GANGIO'yu oyuncular için en iyi iletişim platformu yapan tüm güçlü özellikleri keşfedin.",
+    "sections": {
+      "communication": {
+        "title": "İletişim",
+        "subtitle": "Güçlü iletişim araçlarımızla ekibinizle bağlantıda kalın."
+      },
+      "voiceChat": {
+        "title": "Kristal Netliğinde Sesli Sohbet",
+        "description": "Yoğun oyun oturumları sırasında ekibinizle bağlantıda kalmanızı sağlayan düşük gecikmeli, yüksek kaliteli ses iletişimi deneyimleyin.",
+        "features": [
+          "Net iletişim için gürültü bastırma",
+          "Yankı iptali teknolojisi",
+          "Ayarlanabilir giriş hassasiyeti",
+          "Bas-konuş ve ses aktivasyonu modları"
+        ]
+      },
+      "screenSharing": {
+        "title": "Ekran Paylaşımı",
+        "description": "Oyun deneyiminizi arkadaşlarınızla gerçek zamanlı olarak paylaşın. Strateji tartışmaları, başarılarınızı göstermek veya takım arkadaşlarınıza yardım etmek için mükemmel.",
+        "features": [
+          "Yüksek kaliteli, düşük gecikmeli yayın",
+          "Tüm ekranı veya belirli bir uygulamayı paylaşın",
+          "Ayarlanabilir çözünürlük ve kare hızı",
+          "Aynı anda 50'ye kadar izleyiciye yayın yapın"
+        ]
+      },
+      "gaming": {
+        "title": "Oyun",
+        "subtitle": "Özellikle oyuncular için tasarlanmış özelliklerle oyun deneyiminizi geliştirin."
+      },
+      "gameIntegration": {
+        "title": "Oyun Entegrasyonu",
+        "description": "Kesintisiz bir deneyim için GANGIO'yu favori oyunlarınızla bağlayın. Ne oynadığınızı gösterin, arkadaşlarınızın oyunlarına katılın ve daha fazlası.",
+        "features": [
+          "100+ popüler oyun için zengin durum gösterimi",
+          "Arkadaşlarınızın oyun oturumlarına tek tıklamayla katılın",
+          "Otomatik oyun algılama",
+          "Steam, Epic Games ve daha fazlasıyla entegrasyon"
+        ]
+      }
+    }
+  },
+  "errors": {
+    "general": "Bir şeyler yanlış gitti",
+    "notFound": "Sayfa bulunamadı",
+    "unauthorized": "Bu sayfayı görüntülemek için giriş yapmalısınız",
+    "forbidden": "Bu kaynağa erişim izniniz yok",
+    "networkError": "Ağ hatası. Lütfen bağlantınızı kontrol edin ve tekrar deneyin.",
+    "tryAgain": "Tekrar Deneyin"
+  },
+  "actions": {
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "apply": "Uygula",
+    "confirm": "Onayla",
+    "back": "Geri",
+    "next": "İleri",
+    "finish": "Bitir"
+  }
+}

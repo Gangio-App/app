@@ -1,0 +1,74 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Common functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    
+    // Messages collection
+    match /messages/{messageId} {
+      // Anyone can read messages
+      allow read: if isSignedIn();
+      
+      // Allow any signed-in user to create messages
+      // This is necessary because the authorId may be in a different format than auth.uid
+      allow create: if isSignedIn();
+      
+      // Allow any signed-in user to update messages
+      // In a real production app, you would want more restrictive rules
+      allow update: if isSignedIn();
+      
+      // Allow any signed-in user to delete messages
+      // In a real production app, you would want more restrictive rules
+      allow delete: if isSignedIn();
+    }
+    
+    // Typing indicators collection
+    match /typing/{typingId} {
+      // Anyone can read typing indicators
+      allow read: if isSignedIn();
+      
+      // Allow any signed-in user to create/update typing status
+      // This is necessary because the typingId may not match the user ID format
+      allow create, update: if isSignedIn();
+      
+      // Allow any signed-in user to delete typing status
+      // This is necessary for cleanup when users stop typing
+      allow delete: if isSignedIn();
+    }
+    
+    // Users collection
+    match /users/{userId} {
+      // Users can read other users' profiles
+      allow read: if isSignedIn();
+      
+      // Users can only modify their own profile
+      allow write: if isOwner(userId);
+    }
+    
+    // Direct messages collection
+    match /directMessages/{messageId} {
+      // Anyone can read direct messages
+      allow read: if isSignedIn();
+      
+      // Allow any signed-in user to create direct messages
+      allow create: if isSignedIn();
+      
+      // Allow any signed-in user to update direct messages
+      allow update: if isSignedIn();
+      
+      // Allow any signed-in user to delete direct messages
+      allow delete: if isSignedIn();
+    }
+    
+    // Allow read/write access to all other collections for development
+    match /{document=**} {
+      allow read, write: if isSignedIn();
+    }
+  }
+}
