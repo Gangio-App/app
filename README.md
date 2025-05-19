@@ -43,7 +43,7 @@ Performance is optimized through database indexing on frequently queried fields.
 1.  **Clone the repository:**
     ```bash
     git clone <repository-url>
-    cd elivechit
+    cd gangio
     ```
 
 2.  **Install dependencies:**
